@@ -25,7 +25,15 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/vendor/jquery-1.12.4.min.js",
+              "src/assets/js/main.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/data-table/jquery.dataTables.min.js",
+              "src/assets/js/data-table/data-table-act.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
