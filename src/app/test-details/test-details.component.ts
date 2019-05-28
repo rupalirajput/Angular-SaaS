@@ -14,7 +14,6 @@ import QuestionBankDetails from '../share/QuestionBankDetails';
   styleUrls: ['./test-details.component.css']
 })
 export class TestDetailsComponent implements OnInit {
-  tests: ITestDetailsModel[];
   questionBankDetails:QuestionBankDetails;
   questionBankID: String;
   questionBankName: String;
@@ -31,7 +30,7 @@ export class TestDetailsComponent implements OnInit {
     test$.getQuestionBankDetails(this.questionBankID)
     .subscribe(
       result => {
-        this.questionBankName = result[0].quesBankName;
+        this.questionBankName = result[0].questionBankName;
       },
       () => {},
       () => {}

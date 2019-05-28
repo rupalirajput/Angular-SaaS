@@ -1,6 +1,6 @@
 export default class QuestionBankDetails {
-  quesBankID: Number;
-  quesBankName: String;
+  questionBankID: Number;
+  questionBankName: String;
   status: String;
   createdDate: Date;
   lastmodifiedDate: Date;
