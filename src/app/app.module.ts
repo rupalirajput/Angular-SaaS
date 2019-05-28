@@ -15,7 +15,7 @@ import { QuestionComponent } from './question/question.component';
 import { QuestionApiService } from './services/question-api.service';
 
 import { TestDetailsComponent } from './test-details/test-details.component';
-import { TestDetailsService } from './services/test-details-api.service';
+import { TestDetailsApiService } from './services/test-details-api.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { TestDetailsService } from './services/test-details-api.service';
     FormsModule,
     ModalModule.forRoot(),
   ],
-  providers: [AccountApiService, QuestionApiService, TestDetailsService],
+  providers: [AccountApiService, QuestionApiService, TestDetailsApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

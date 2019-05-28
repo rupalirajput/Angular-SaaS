@@ -6,7 +6,7 @@ import QuestionBankDetails from '../share/QuestionBankDetails';
 @Injectable({
   providedIn: 'root'
 })
-export class TestDetailsService {
+export class TestDetailsApiService {
 
   hostUrl = 'http://localhost:1234/';
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { TestDetailsService } from '../services/test-details-api.service';
+import { TestDetailsApiService } from '../services/test-details-api.service';
 import ITestDetailsModel from '../share/ITestDetailsModel';
 
 // Allows access to definition of QuestionBankDetails
@@ -25,7 +25,7 @@ export class TestDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private test$: TestDetailsService
+    private test$: TestDetailsApiService
   ) {
     this.questionBankID = route.snapshot.params['id'];
     test$.getQuestionBankDetails(this.questionBankID)
