@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import ITakeTestModel from '../share/ITakeTestModel';
+import ITestDetailsModel from '../share/ITestDetailsModel';
 import QuestionBankDetails from '../share/QuestionBankDetails';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TakeTestService {
+export class TestDetailsService {
 
   hostUrl = 'http://localhost:1234/';
 

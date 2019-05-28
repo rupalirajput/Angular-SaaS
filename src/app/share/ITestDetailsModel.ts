@@ -1,7 +1,7 @@
-interface ITestModel{
+interface ITestDetailsModel{
   testID : Number;
   questionBankCreatorID : Number;
-  testTakeerID : Number;
+  testTakerID : Number;
   questionBankID : Number;
   questionID : Number;
   orderOfQuestionInTest : Number;
@@ -9,4 +9,4 @@ interface ITestModel{
   // isCorrect will be 0 incorrect, 1 will be correct
   isCorrect : Number;
 }
-export default ITestModel;
+export default ITestDetailsModel;

@@ -14,11 +14,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuestionComponent } from './question/question.component';
 import { QuestionApiService } from './services/question-api.service';
 
+import { TestDetailsComponent } from './test-details/test-details.component';
+import { TestDetailsService } from './services/test-details-api.service';
+
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
     QuestionComponent,
+    TestDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,7 @@ import { QuestionApiService } from './services/question-api.service';
     FormsModule,
     ModalModule.forRoot(),
   ],
-  providers: [AccountApiService, QuestionApiService],
-  bootstrap: [AppComponent],
+  providers: [AccountApiService, QuestionApiService, TestDetailsService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

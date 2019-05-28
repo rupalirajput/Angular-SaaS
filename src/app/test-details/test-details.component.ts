@@ -2,19 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { TakeTestService } from '../services/take-test-api.service';
-import ITakeTestModel from '../share/ITakeTestModel';
+import { TestDetailsService } from '../services/test-details-api.service';
+import ITestDetailsModel from '../share/ITestDetailsModel';
 
 // Allows access to definition of QuestionBankDetails
 import QuestionBankDetails from '../share/QuestionBankDetails';
 
 @Component({
-  selector: 'app-take-test',
-  templateUrl: './take-test.component.html',
-  styleUrls: ['./take-test.component.css']
+  selector: 'app-test-details',
+  templateUrl: './test-details.component.html',
+  styleUrls: ['./test-details.component.css']
 })
-export class TakeTestComponent implements OnInit {
-  tests: ITakeTestModel[];
+export class TestDetailsComponent implements OnInit {
+  tests: ITestDetailsModel[];
   questionBankDetails:QuestionBankDetails;
   questionBankID: String;
   questionBankName: String;
@@ -25,7 +25,7 @@ export class TakeTestComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private test$: TakeTestService
+    private test$: TestDetailsService
   ) {
     this.questionBankID = route.snapshot.params['id'];
     test$.getQuestionBankDetails(this.questionBankID)
