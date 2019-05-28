@@ -17,12 +17,16 @@ import { QuestionApiService } from './services/question-api.service';
 import { TestDetailsComponent } from './test-details/test-details.component';
 import { TestDetailsApiService } from './services/test-details-api.service';
 
+import { TakeTestComponent } from './take-test/take-test.component';
+import { TakeTestServiceApi } from './services/take-test-api.service';
+
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
     QuestionComponent,
-    TestDetailsComponent
+    TestDetailsComponent,
+    TakeTestComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ import { TestDetailsApiService } from './services/test-details-api.service';
     FormsModule,
     ModalModule.forRoot(),
   ],
-  providers: [AccountApiService, QuestionApiService, TestDetailsApiService],
+  providers: [AccountApiService, QuestionApiService, TestDetailsApiService,
+  TakeTestServiceApi],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
