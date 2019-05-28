@@ -32,7 +32,8 @@
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26",
     "@angular/http": "latest",
-    "@angular/material": "latest"
+    "@angular/material": "latest",
+    "ngx-bootstrap": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",

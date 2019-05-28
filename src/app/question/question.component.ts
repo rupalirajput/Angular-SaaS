@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output} from '@angular/core';
 import { QuestionApiService } from '../services/question-api.service';
 import IQuestionModel from '../share/IQuestionModel';
-import { EditQuestionComponent } from '../edit-question/edit-question.component';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-question',
@@ -11,31 +10,45 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class QuestionComponent implements OnInit {
 
+  @ViewChild('childModal') public childModal: ModalDirective;
   public questions: IQuestionModel[];
-  public sel_question: IQuestionModel;
-  display = 'none';
+  @ViewChild('modal')
+  selectedQuestionId: number;
+  public questionDetails: IQuestionModel[];
+  selectedQuestionLoaded = false;
+  animation = true;
 
-  constructor(public question$: QuestionApiService, public modalService: NgbModal) {
+  constructor(
+    private question$: QuestionApiService
+    ) { }
+
+  ngOnInit() {
+    this.loadQuestions();
+  }
+
+  loadQuestions() {
     this.question$.getQuestions().subscribe((result: IQuestionModel[]) => {
       this.questions = result;
-      this.sel_question = result[1];
+    }, error => {
+      console.log('Failed to load questions. ' + error);
     });
   }
-  ngOnInit() {
+
+  editQuestionDetails(questionID: number) {
+    this.selectedQuestionId = questionID;
+    this.question$.getQuestionsIndex(this.selectedQuestionId).subscribe((result: IQuestionModel[]) => {
+          this.questionDetails = result;
+          this.selectedQuestionLoaded = true;
+          this.childModal.show();
+          console.log(this.questionDetails[0].questionID);
+        },
+        error => {
+          console.log('Failed to load questions. ' + error);
+        });
   }
 
-  onCloseHandled() {
-    this.display = 'none';
+  public hideChildModal(): void {
+    this.childModal.hide();
   }
-  openModal(questionID: string) {
-    console.log(questionID);
-    this.display = 'block';
-    this.question$.getQuestionsIndex(questionID).subscribe((result: IQuestionModel) => {
-      this.sel_question = result;
-    });
-    // const modalRef = this.modalService.open(EditQuestionComponent);
-    // modalRef.componentInstance.question = question;
-    // this.question = question;
 
-  }
 }

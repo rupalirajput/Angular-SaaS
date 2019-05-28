@@ -15,7 +15,7 @@ export class QuestionApiService {
     return this.httpClient.get<IQuestionModel[]>( this.hostUrl + 'questions/');
   }
 
-  getQuestionsIndex(index: string) {
-    return this.httpClient.get<IQuestionModel>( this.hostUrl + 'app/questions/' + index);
+  getQuestionsIndex(index: number) {
+    return this.httpClient.get<IQuestionModel[]>( this.hostUrl + 'questions/' + index);
   }
 }
