@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset = "utf-8">
+  <title>Reports</title>
+</head>
+
+<body>
+  <!-- BANNER BEGIN -->
+  <div class="header-top-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div class="logo-area">
+            <img src="" alt=""/>
+            <h4>ADAPTIVE PRACTICE TEST</h4>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+          <div class="header-top-menu">
+            <ul class="nav navbar-nav notika-top-nav">
+              <li class="nav-item dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
+                  <i class="fa fa-user fa-fw"></i>
+                  <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                  <li>
+                    <a href="changePassword.html">
+                      <i class="fa fa-gear fa-fw"></i>
+                      Change Password
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="loginPage.html">
+                      <i class="fa fa-sign-out fa-fw"></i>
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+              <!-- /.dropdown-user -->
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- BANNER END -->
+
+	<!-- WELCOME BEGIN-->
+	<div class="breadcomb-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="breadcomb-list">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="breadcomb-wp">
+									<div class="breadcomb-icon">
+										<i class="notika-icon notika-windows"></i>
+									</div>
+									<div class="breadcomb-ctn">
+										<h2>Precalculus Chapters 1-4 Report</h2>
+										<p>Welcome to QUIZAPP<span class="bread-ntd"></span></p>
+									</div>
+								</div>
+							</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                <div class="breadcomb-report">
+                  <button type="button" class="btn btn-info" onclick="location.href = 'student.html';" >
+                    Go to Dashboard
+                  </button>
+                </div>
+              </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- WELCOME END-->
+
+  <!-- TEST DEFINITION START -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <p style="font-size: medium; color: #5b5b5b">Title: Precalculus Chapters 1-4</p>
+      </div>
+      <div class="col-xs-6">
+        <p style="font-size: medium; color: #5b5b5b">Strength: {{strengths}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <p style="font-size: medium; color: #5b5b5b">Overall Score: 87%</p>
+      </div>
+      <div class="col-xs-6">
+        <p style="font-size: medium; color: #5b5b5b">Improve: {{weaknesses}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- TEST DEFINITION END -->
+
+  <!-- BAR CHART BEGIN -->
+
+  <div class="bar-chart-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="bar-chart-wp">
+            <canvas height="140vh" width="180vw" id="barchart1"></canvas>
+          </div> 
+
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="normal-table-area">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="normal-table-list">
+                    <div class="basic-tb-hd">
+                      <h2 class="text-center">
+                        Score Per Section
+                      </h2>
+                    </div>
+                    <div class="bsc-tbl-hvr">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Concept</th>
+                            <th>Score</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Slopes of Lines</td>
+                            <td>19</td>
+                          </tr>
+                          <tr>
+                            <td>Equations of Lines</td>
+                            <td>7</td>
+                          </tr>
+                          <tr>
+                            <td>Horizontal and Vertical Lines</td>
+                            <td>3</td>
+                          </tr>
+                          <tr>
+                            <td>Tangent Lines</td>
+                            <td>5</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!-- BAR CHART END -->
+
+  <!-- FOOTER BEGIN -->
+  <div class="footer-copyright-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="footer-copy-right">
+            <p>Copyright © 2019. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+

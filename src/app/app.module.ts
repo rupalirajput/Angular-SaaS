@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import { AccountComponent } from './account/account.component';
 import { AccountApiService } from './services/account-api.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ReportComponent } from './report/report.component';
+import { ReportService} from './report.service';
+import { ReportClass } from './report-class';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccountComponent
+    AccountComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +23,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     NgbModule,
   ],
-  providers: [AccountApiService],
+  providers: [AccountApiService, ReportService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
