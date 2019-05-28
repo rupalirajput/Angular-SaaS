@@ -28,6 +28,9 @@ export class TestDetailsComponent implements OnInit {
     .subscribe(
       result => {
         this.questionBankName = result[0].questionBankName;
+        this.duration = result[0].duration;
+        this.numberOfQuestions = result[0].numberOfQuestions;
+        this.keyConcepts = result[0].keyConcepts;
       },
       () => {},
       () => {}
