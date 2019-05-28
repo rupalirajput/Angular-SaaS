@@ -5,8 +5,6 @@ import { Location } from '@angular/common';
 import { TestDetailsApiService } from '../services/test-details-api.service';
 import ITestDetailsModel from '../share/ITestDetailsModel';
 
-// Allows access to definition of QuestionBankDetails
-import QuestionBankDetails from '../share/QuestionBankDetails';
 
 @Component({
   selector: 'app-test-details',
@@ -14,12 +12,11 @@ import QuestionBankDetails from '../share/QuestionBankDetails';
   styleUrls: ['./test-details.component.css']
 })
 export class TestDetailsComponent implements OnInit {
-  questionBankDetails:QuestionBankDetails;
   questionBankID: String;
   questionBankName: String;
-  createdDate: Date;
-  lastmodifiedDate: Date;
-  createdBy: String;
+  duration: Number;
+  numberOfQuestions: Number;
+  keyConcepts: String;
 
   constructor(
     private route: ActivatedRoute,

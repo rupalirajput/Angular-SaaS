@@ -1,12 +1,13 @@
 interface ITestDetailsModel{
-  testID : Number;
-  questionBankCreatorID : Number;
-  testTakerID : Number;
-  questionBankID : Number;
-  questionID : Number;
-  orderOfQuestionInTest : Number;
-  category : String;
-  // isCorrect will be 0 incorrect, 1 will be correct
-  isCorrect : Number;
+  questionBankID: Number;
+  questionBankName: String;
+  duration: Number;
+  numberOfQuestions: Number;
+  keyConcepts: String;
+  status: String;
+  createdDate: Date;
+  lastmodifiedDate: Date;
+  createdBy: String;
+  updatedBy: String;
 }
 export default ITestDetailsModel;

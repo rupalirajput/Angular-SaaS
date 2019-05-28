@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import ITestDetailsModel from '../share/ITestDetailsModel';
-import QuestionBankDetails from '../share/QuestionBankDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +13,6 @@ export class TestDetailsApiService {
 
   getQuestionBankDetails(id: String)
   {
-    return this.httpClient.get<QuestionBankDetails[]>(this.hostUrl + 'questionBanks/' + id )
+    return this.httpClient.get<ITestDetailsModel[]>(this.hostUrl + 'questionBanks/' + id )
   }
 }
