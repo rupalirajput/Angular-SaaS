@@ -30,9 +30,10 @@
               "./node_modules/tether/dist/js/tether.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/vendor/jquery-1.12.4.min.js",
-              "src/assets/js/bootstrap.min.js",
               "src/assets/js/data-table/jquery.dataTables.min.js",
               "src/assets/js/data-table/data-table-act.js",
+              "src/assets/js/charts/Chart.js",
+              "src/assets/js/charts/bar-chart.js",
               "src/assets/js/main.js"
             ],
             "es5BrowserSupport": true

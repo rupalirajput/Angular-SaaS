@@ -1,3 +1,91 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<router-outlet></router-outlet>
 
+<!-- BANNER BEGIN -->
+<div class="header-top-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div class="logo-area">
+            <img src="" alt="" />
+            <h4>ADAPTIVE PRACTICE TEST</h4>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+          <div class="header-top-menu">
+            <ul class="nav navbar-nav notika-top-nav">
+              <li ngbDropdown class="nav-item dropdown">
+                <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                  <i class="fa fa-user fa-fw"></i>
+                  <i class="fa fa-caret-down"></i>
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu dropdown-user">
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-gear fa-fw"></i>
+                      Change Password
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="loginPage.html">
+                      <i class="fa fa-sign-out fa-fw"></i>
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+                <!-- /.dropdown-user -->
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- BANNER END -->
+  <!-- Breadcomb area Start-->
+	<div class="breadcomb-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="breadcomb-list">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="breadcomb-wp">
+									<div class="breadcomb-icon">
+										<i class="notika-icon notika-windows"></i>
+									</div>
+									<div class="breadcomb-ctn">
+										<h2>My Dashboard</h2>
+										<p>Welcome to ADAPTEST<span class="bread-ntd"></span></p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+								<div class="breadcomb-report">
+                    <button type="button" class="btn btn-success" onclick="location.href = 'createQuestionBank.html';" > Create Question Bank </button>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Breadcomb area End-->
+  <app-ques-bank-table></app-ques-bank-table>
+  <!-- FOOTER BEGIN-->
+<div class="footer-copyright-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="footer-copy-right">
+            <p>Copyright © 2019. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FOOTER END -->
+  
+<router-outlet></router-outlet>

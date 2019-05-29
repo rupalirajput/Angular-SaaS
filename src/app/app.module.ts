@@ -10,15 +10,28 @@ import { ModalModule } from 'ngx-bootstrap';
 
 import { AccountComponent } from './account/account.component';
 import { AccountApiService } from './services/account-api.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ReportComponent } from './report/report.component';
+import { ReportService} from './report.service';
+import { ReportClass } from './report-class';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuestionComponent } from './question/question.component';
 import { QuestionApiService } from './services/question-api.service';
+
+import { TestDetailsComponent } from './test-details/test-details.component';
+import { TestDetailsApiService } from './services/test-details-api.service';
+
+import { TakeTestComponent } from './take-test/take-test.component';
+import { TakeTestServiceApi } from './services/take-test-api.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
+    ReportComponent
     QuestionComponent,
+    TestDetailsComponent,
+    TakeTestComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +41,8 @@ import { QuestionApiService } from './services/question-api.service';
     FormsModule,
     ModalModule.forRoot(),
   ],
-  providers: [AccountApiService, QuestionApiService],
-  bootstrap: [AppComponent],
+  providers: [AccountApiService, QuestionApiService, TestDetailsApiService,
+  TakeTestServiceApi,ReportService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
