@@ -13,7 +13,7 @@ const routes: Routes = [
 
   { path: 'professor_dashboard', component: QuesBankTableComponent },
   { path: 'create_question', component: QuestionComponent },
-  { path: 'test/:id', component: TestDetailsComponent},
+  { path: 'test/detail/:id', component: TestDetailsComponent},
   { path: 'ques-bank-table', component: QuesBankTableComponent }
 ];
 
