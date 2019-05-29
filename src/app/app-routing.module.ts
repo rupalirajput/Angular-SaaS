@@ -6,6 +6,8 @@ import {questionBankTableComponent} from './ques-bank-table/ques-bank-table.comp
 import {QuestionComponent} from './question/question.component';
 import { TestDetailsComponent } from './test-details/test-details.component';
 import { TakeTestComponent } from './take-test/take-test.component';
+import {StudentdashboardComponent} from './studentdashboard/studentdashboard.component';
+
 
 const routes: Routes = [
   { path: 'account', component: AccountComponent },
@@ -15,8 +17,7 @@ const routes: Routes = [
   { path: 'create_question', component: QuestionComponent },
   { path: 'test/detail/:id', component: TestDetailsComponent},
   { path: 'test/:questionbankid', component: TakeTestComponent },
-  { path: 'ques-bank-table', component: questionBankTableComponent },
-  { path: 'student_dashboard', component: questionBankTableComponent }
+  { path: 'student_dashboard', component: StudentdashboardComponent }
 ];
 
 @NgModule({
