@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'create_question', component: QuestionComponent },
   { path: 'test/detail/:id', component: TestDetailsComponent},
   { path: 'ques-bank-table', component: QuesBankTableComponent }
+  { path: 'student_dashboard', component: QuesBankTableComponent }
 ];
 
 @NgModule({

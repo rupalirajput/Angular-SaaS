@@ -26,6 +26,9 @@ import { TakeTestApiService } from './services/take-test-api.service';
 import {QuesBankTableComponent} from './ques-bank-table/ques-bank-table.component';
 import {QuesBankService} from './services/ques-bank.service';
 
+import { StudentdashboardComponent } from './studentdashboard/studentdashboard.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,8 @@ import {QuesBankService} from './services/ques-bank.service';
     QuestionComponent,
     TestDetailsComponent,
     TakeTestComponent,
-    QuesBankTableComponent
+    QuesBankTableComponent,
+	StudentdashboardComponent
   ],
   imports: [
     BrowserModule,
