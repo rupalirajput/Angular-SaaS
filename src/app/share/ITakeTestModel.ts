@@ -1,5 +1,6 @@
 interface ITakeTestModel{
   questionBankID : Number;
+  questionBankName : String;
   questionID : Number;
   questionText : String;
   category : String;

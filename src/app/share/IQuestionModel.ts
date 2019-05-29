@@ -1,5 +1,6 @@
 interface IQuestionsModel {
-  questionBankID: number;
+  questionBankID: String;
+  questionBankName: string;
   questionID: number;
   questionText: string;
   category: string;

@@ -13,6 +13,6 @@ export class TestDetailsApiService {
 
   getQuestionBankDetails(id: String)
   {
-    return this.httpClient.get<ITestDetailsModel[]>(this.hostUrl + 'questionBanks/' + id )
+    return this.httpClient.get<ITestDetailsModel[]>(this.hostUrl + 'test/' + id )
   }
 }

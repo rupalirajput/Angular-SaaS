@@ -12,7 +12,7 @@ export class TakeTestApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getFirstQuestion(questionBankID: Number)
+  getFirstQuestion(questionBankID: String)
   {
     return this.httpClient.get<IQuestionModel[]>(this.hostUrl + 'test/' + questionBankID )
   }

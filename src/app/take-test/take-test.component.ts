@@ -11,7 +11,8 @@ import ITakeTestModel from '../share/ITakeTestModel';
   styleUrls: ['./take-test.component.css']
 })
 export class TakeTestComponent implements OnInit {
-  questionBankID: Number;
+  questionBankID: String;
+  questionBankName: String;
   testTakerID: Number;
   currentQuestionID: Number;
   orderOfQuestionInTest: Number;
@@ -26,20 +27,22 @@ export class TakeTestComponent implements OnInit {
     private location: Location,
     private test$: TakeTestApiService
   ) {
-    this.questionBankID = +route.snapshot.params['id'];
+    this.questionBankID = route.snapshot.params['id'];
+    console.log(this.questionBankID);
     test$.getFirstQuestion(this.questionBankID)
     .subscribe(
       result => {
-        this.questionBankID = result[0].questionBankID;
+        this.questionBankName = result[0].questionBankName;
         this.currentQuestionID = result[0].questionID;
         this.orderOfQuestionInTest = 0;
         this.questionText = result[0].questionText;
         this.category = result[0].category;
         this.options = result[0].options;
         this.answer = result[0].answer;
+        console.log(this.options);
       },
       () => {},
-      () => {}
+      () => {},
     );
   }
 
