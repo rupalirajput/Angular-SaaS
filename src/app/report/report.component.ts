@@ -26,6 +26,7 @@ export class ReportComponent implements OnInit {
   categories: [];
   scores: [];
   title: String;
+
   
   reportNum: string;
   chart = [];
@@ -34,8 +35,7 @@ export class ReportComponent implements OnInit {
   
   constructor(private route: ActivatedRoute,
     private list: ReportService) { 
-        this.userid = route.snapshot.params['userid'];
-        this.reportNum = route.snapshot.params['reportNum'];       
+        
   }
   makeChart(){
     var ctx = document.getElementById("barchart1");
@@ -79,8 +79,13 @@ export class ReportComponent implements OnInit {
     });
   }
   ngOnInit() {
-        this.list.getSingleReport(this.userid, this.reportNum).subscribe((
+    this.userid = this.route.snapshot.params['userid'];
+        this.questionBankID = this.route.snapshot.params.questionBankID;       
+        console.log("id: "+ this.route.snapshot.params['questionBankID']); 
+        console.log("userid: "+this.route.snapshot.params['userid']);    
+    this.list.getSingleReport(this.userid, this.questionBankID).subscribe((
           result: IReportModel[]) => {
+            console.log(result);
             this.reportid = result[0].reportid;
             this.userid = result[0].userid;
             this.questionBankID = result[0].questionBankID;
@@ -89,8 +94,13 @@ export class ReportComponent implements OnInit {
             this.weaknesses = result[0].weaknesses;
             this.categories = result[0].categories;
             this.scores = result[0].scores;
+            console.log(this.scores);
             this.title = result[0].title;
             this.makeChart();
+            
+          },
+          error => {
+            console.log('Failed to load questions. ' + error);
           });
     }
 }

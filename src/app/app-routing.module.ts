@@ -12,12 +12,13 @@ import {StudentdashboardComponent} from './studentdashboard/studentdashboard.com
 const routes: Routes = [
   { path: 'account', component: AccountComponent },
   { path: 'reports', component: ReportComponent },
-  { path: 'report/:userid/reports/:reportNum', component: ReportComponent},
+  { path: 'report/:userid/reports/:questionBankID', component: ReportComponent},
   { path: 'professor_dashboard', component: questionBankTableComponent },
   { path: 'create_question/:questionBankID', component: QuestionComponent },
   { path: 'test/detail/:id', component: TestDetailsComponent},
   { path: 'test/:questionbankid', component: TakeTestComponent },
-  { path: 'student_dashboard', component: StudentdashboardComponent }
+  { path: 'student_dashboard', component: StudentdashboardComponent },
+  { path: '', component: questionBankTableComponent }
 ];
 
 @NgModule({

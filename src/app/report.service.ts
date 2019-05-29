@@ -16,8 +16,8 @@ export class ReportService {
     .pipe(map(response => console.log(response)));
   }
 
-  getSingleReport(userid: Number, reportNum: string) {
-    return this.http.get<IReportModel[]>( 'http://localhost:1234/report/' + userid + '/reports/' + reportNum);
+  getSingleReport(userid: Number, questionBankID: Number) {
+    return this.http.get<IReportModel[]>( 'http://localhost:1234/report/' + userid + '/reports/' + questionBankID);
     
     
   }
