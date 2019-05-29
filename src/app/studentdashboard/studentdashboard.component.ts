@@ -10,11 +10,11 @@ import ITestDetailsModel from '../share/ITestDetailsModel';
   styleUrls: ['./studentdashboard.component.css']
 })
 export class StudentdashboardComponent implements OnInit {
-  questionBanks: IquestionBankModel[];
+  quesBanks: IquestionBankModel[];
 
-  constructor(private testDetail$: TestDetailsApiService) {
-    testDetail$.getListsIndex().subscribe((result: IquestionBankModel[]) => {
-    this.questionBanks = result;
+  constructor(private quesBank$: questionBankService) {
+    quesBank$.getListsIndex().subscribe((result: IquestionBankModel[]) => {
+    this.quesBanks = result;
   });
 }
 
