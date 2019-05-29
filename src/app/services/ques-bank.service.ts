@@ -10,10 +10,10 @@ export class QuesBankService {
   constructor(private httpClient: HttpClient) { }
 
   getListsIndex() {
-    return this.httpClient.get<IQuestionBankModel[]>( this.hostUrl + 'app/questionBanks/');
+    return this.httpClient.get<IQuestionBankModel[]>( this.hostUrl + 'questionBanks/');
   }
 
   getItems(index: string) {
-    return this.httpClient.get<IQuestionBankModel[]>( this.hostUrl + 'app/questionBanks/' + index + '.json');
+    return this.httpClient.get<IQuestionBankModel[]>( this.hostUrl + 'questionBanks/' + index + '.json');
   }
 }
