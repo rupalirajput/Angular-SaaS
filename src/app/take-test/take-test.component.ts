@@ -18,7 +18,7 @@ export class TakeTestComponent implements OnInit {
   orderOfQuestionInTest: Number;
   questionText: String;
   category: String;
-  options1: String;
+  option1: String;
   option2: String;
   option3: String;
   option4: String;
@@ -34,7 +34,6 @@ export class TakeTestComponent implements OnInit {
     test$.getFirstQuestion(this.questionBankID)
     .subscribe(
       result => {
-        console.log(result);
         this.questionBankName = result.questionBankName;
         this.currentQuestionID = result.questionID;
         this.orderOfQuestionInTest = 1;
@@ -45,7 +44,6 @@ export class TakeTestComponent implements OnInit {
         this.option3 = result.options[2];
         this.option4 = result.options[3];
         this.answer = result.answer;
-        console.log(this.options);
       },
       () => {},
       () => {},
