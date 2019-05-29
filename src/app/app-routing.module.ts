@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'reports', component: ReportComponent },
   { path: 'report/:userid/reports/:reportNum', component: ReportComponent},
   { path: 'professor_dashboard', component: questionBankTableComponent },
-  { path: 'create_question', component: QuestionComponent },
+  { path: 'create_question/:questionBankID', component: QuestionComponent },
   { path: 'test/detail/:id', component: TestDetailsComponent},
   { path: 'test/:questionbankid', component: TakeTestComponent },
   { path: 'student_dashboard', component: StudentdashboardComponent }

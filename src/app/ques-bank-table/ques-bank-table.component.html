@@ -18,7 +18,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
               <div class="breadcomb-report">
-                <button type="button" class="btn btn-success" onclick="location.href = '/create_question/';" > Create Question Bank </button>
+                <button type="button" class="btn btn-success" onclick="location.href = '/create_question/0';" > Create Question Bank </button>
 
               </div>
             </div>
@@ -55,10 +55,10 @@
                       <td> {{questionBank.keyConcepts}} </td>
                       <td> {{questionBank.createdDate|date:'shortDate'}} </td>
                       <td> {{questionBank.status}} </td>
-                      <td>
-                        <button type="button" class="btn btn-primary"> Edit </button>
-                        <button type="button" class="btn btn-danger"> Delete </button>
-                        <button type="button" class="btn btn-light"> Publish </button>
+                      <td class="nowrap" style="width: 25%">
+                        <button type="button" class="btn btn-primary" [routerLink]="['/create_question/' + questionBank.questionBankID]"> Edit </button>
+                        &nbsp;&nbsp;<button type="button" class="btn btn-danger"> Delete </button>
+                        &nbsp;&nbsp;<button type="button" class="btn btn-light"> Publish </button>
                       </td>
                     </tr>
                   </tbody>

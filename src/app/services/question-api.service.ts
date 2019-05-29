@@ -15,6 +15,10 @@ export class QuestionApiService {
     return this.httpClient.get<IQuestionModel[]>( this.hostUrl + 'questions/');
   }
 
+  getQuestionsByBankID(questionBankID: number) {
+    return this.httpClient.get(this.hostUrl + 'questions/bank/' + questionBankID);
+  }
+
   getQuestionsIndex(index: number) {
     return this.httpClient.get<IQuestionModel[]>( this.hostUrl + 'questions/' + index);
   }

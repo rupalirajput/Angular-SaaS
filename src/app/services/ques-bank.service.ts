@@ -13,7 +13,7 @@ export class questionBankService {
     return this.httpClient.get<IQuestionBankModel[]>( this.hostUrl + 'questionBanks/');
   }
 
-  getItems(index: string) {
-    return this.httpClient.get<IQuestionBankModel[]>( this.hostUrl + 'questionBanks/' + index + '.json');
+  getItems(index: number ) {
+    return this.httpClient.get<IQuestionBankModel[]>( this.hostUrl + 'questionBanks/' + index);
   }
 }
