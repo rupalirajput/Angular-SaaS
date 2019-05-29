@@ -6,5 +6,8 @@ interface IQuestionBankModel{
     lastmodifiedDate: Date;
     createdBy: string;
     updatedBy: string;
+    description: string;
+    noOfQues: number;
+    duration: number;
 }
 export default IQuestionBankModel;
