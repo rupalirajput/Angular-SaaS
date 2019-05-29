@@ -19,10 +19,13 @@ export class ReportComponent implements OnInit {
   
   reportid: Number;
   userid: Number;
-  questionBankID: Number;
+  quesBankID: Number;
   score: Number;
   strengths: String;
   weaknesses: String;
+  categories: [];
+  scores: [];
+  title: String;
   
   reportNum: string;
   chart = [];
@@ -31,48 +34,18 @@ export class ReportComponent implements OnInit {
   
   constructor(private route: ActivatedRoute,
     private list: ReportService) { 
-    
         this.userid = route.snapshot.params['userid'];
-        this.reportNum = route.snapshot.params['reportNum'];
-        /*list.getSingleReport(this.userid, this.reportNum).subscribe((
-          result: IReportModel[]) => {
-            this.reportid = result[0].reportid;
-            this.userid = result[0].userid;
-            this.questionBankID = result[0].questionBankID;
-            this.score = result[0].score;
-            this.strengths = result[0].strengths;
-            this.weaknesses = result[0].weaknesses;
-
-          });*/
-          
+        this.reportNum = route.snapshot.params['reportNum'];       
   }
-
-  ngOnInit() {
-
-    
-        this.list.getSingleReport(this.userid, this.reportNum).subscribe((
-          result: IReportModel[]) => {
-            this.reportid = result[0].reportid;
-            this.userid = result[0].userid;
-            this.questionBankID = result[0].questionBankID;
-            this.score = result[0].score;
-            this.strengths = result[0].strengths;
-            this.weaknesses = result[0].weaknesses;
-
-          });
-
-    
+  makeChart(){
     var ctx = document.getElementById("barchart1");
     var barchart1 = new Chart(ctx, {
-
-  
- 
-      type: 'bar',
+    type: 'bar',
       data: {
-        labels: [this.strengths, this.weaknesses],
+        labels: this.categories,
         datasets: [{
-          label: this.questionBankID,
-          data: [12, 19, 3, 5, 2, 3],
+          label: "",
+          data: this.scores,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgb(50,205,50, 0.2)',
@@ -88,18 +61,37 @@ export class ReportComponent implements OnInit {
           borderWidth: 1
         }]
       },
-      options: {
+      options: { legend:{display: false},
         scales: {
           yAxes: [{
             ticks: {
-              beginAtZero:true
+              beginAtZero:true,
+              autoSkip: false
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              autoSkip: false
             }
           }]
         }
       }
     });
   }
-
-
-
+  ngOnInit() {
+        this.list.getSingleReport(this.userid, this.reportNum).subscribe((
+          result: IReportModel[]) => {
+            this.reportid = result[0].reportid;
+            this.userid = result[0].userid;
+            this.quesBankID = result[0].quesBankID;
+            this.score = result[0].score;
+            this.strengths = result[0].strengths;
+            this.weaknesses = result[0].weaknesses;
+            this.categories = result[0].categories;
+            this.scores = result[0].scores;
+            this.title = result[0].title;
+            this.makeChart();
+          });
+    }
 }
+
