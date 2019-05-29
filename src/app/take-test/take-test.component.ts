@@ -18,7 +18,10 @@ export class TakeTestComponent implements OnInit {
   orderOfQuestionInTest: Number;
   questionText: String;
   category: String;
-  options: [String, String, String, String];
+  options1: String;
+  option2: String;
+  option3: String;
+  option4: String;
   answer: String;
   isCorrect: Number;
 
@@ -27,18 +30,21 @@ export class TakeTestComponent implements OnInit {
     private location: Location,
     private test$: TakeTestApiService
   ) {
-    this.questionBankID = route.snapshot.params['id'];
-    console.log(this.questionBankID);
+  this.questionBankID = route.snapshot.params['questionbankid'];    console.log(this.questionBankID);
     test$.getFirstQuestion(this.questionBankID)
     .subscribe(
       result => {
-        this.questionBankName = result[0].questionBankName;
-        this.currentQuestionID = result[0].questionID;
-        this.orderOfQuestionInTest = 0;
-        this.questionText = result[0].questionText;
-        this.category = result[0].category;
-        this.options = result[0].options;
-        this.answer = result[0].answer;
+        console.log(result);
+        this.questionBankName = result.questionBankName;
+        this.currentQuestionID = result.questionID;
+        this.orderOfQuestionInTest = 1;
+        this.questionText = result.questionText;
+        this.category = result.category;
+        this.option1 = result.options[0];
+        this.option2 = result.options[1];
+        this.option3 = result.options[2];
+        this.option4 = result.options[3];
+        this.answer = result.answer;
         console.log(this.options);
       },
       () => {},
