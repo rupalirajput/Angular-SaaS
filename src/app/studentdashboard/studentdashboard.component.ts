@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {questionBankService} from '../services/ques-bank.service';
+import {TestDetailsApiService} from '../services/test-details-api.service';
 import IquestionBankModel from '../share/IQuestionBankModel';
+import ITestDetailsModel from '../share/ITestDetailsModel';
 
 @Component({
   selector: 'app-studentdashboard',
@@ -10,8 +12,8 @@ import IquestionBankModel from '../share/IQuestionBankModel';
 export class StudentdashboardComponent implements OnInit {
   questionBanks: IquestionBankModel[];
 
-  constructor(private questionBank$: questionBankService) {
-    questionBank$.getListsIndex().subscribe((result: IquestionBankModel[]) => {
+  constructor(private testDetail$: TestDetailsApiService) {
+    testDetail$.getListsIndex().subscribe((result: IquestionBankModel[]) => {
     this.questionBanks = result;
   });
 }
