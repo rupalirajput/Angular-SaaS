@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import IReportModel from './share/IReportModel';
+import IReportModel from '../share/IReportModel';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +18,8 @@ export class ReportService {
 
   getSingleReport(userid: Number, questionBankID: Number) {
     return this.http.get<IReportModel[]>( 'http://localhost:1234/report/' + userid + '/reports/' + questionBankID);
-    
-    
+
+
   }
 
 }

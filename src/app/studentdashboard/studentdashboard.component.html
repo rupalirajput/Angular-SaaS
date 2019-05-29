@@ -57,7 +57,7 @@
                           <td> {{questionBank.duration}} </td>
                           <td> Completed </td>
                         <td class="wrap" style="width:38%">
-                          <button type="button" class="btn btn-primary" onclick="location.href = 'testDescription.html'">
+                          <button type="button" class="btn btn-primary" [routerLink]="['/test/'+ questionBank.questionBankID]">
                             Reattempt-Take Test
                           </button>&nbsp;&nbsp;
                           <button type="button" class="btn btn-success"
@@ -76,4 +76,3 @@
       </div>
     </div>
     <!-- TEST TABLE END-->
-  

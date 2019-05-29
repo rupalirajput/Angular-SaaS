@@ -11,7 +11,7 @@ import { AccountComponent } from './account/account.component';
 import { AccountApiService } from './services/account-api.service';
 
 import { ReportComponent } from './report/report.component';
-import { ReportService} from './report.service';
+import { ReportService} from './services/report.service';
 import { ReportClass } from './report-class';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuestionComponent } from './question/question.component';

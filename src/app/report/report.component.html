@@ -28,7 +28,7 @@
 							</div>
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                 <div class="breadcomb-report">
-                  <button type="button" class="btn btn-info" onclick="location.href = 'student_dashboard';" >
+                  <button type="button" class="btn btn-info" [routerLink]="['/student_dashboard']" >
                     Go to Dashboard
                   </button>
                 </div>
@@ -70,7 +70,7 @@
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="bar-chart-wp">
             <canvas height="140vh" width="180vw" id="barchart1"></canvas>
-          </div> 
+          </div>
 
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -109,12 +109,11 @@
       </div>
     </div>
   </div>
-  
-  
-  
+
+
+
   <!-- BAR CHART END -->
 
 </body>
 
 </html>
-

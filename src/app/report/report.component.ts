@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'src/assets/js/charts/Chart.js';
 import IReportModel from '../share/IReportModel';
-import { ReportService } from '../report.service';
+import { ReportService } from '../services/report.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import {ReportClass} from '../report-class';
@@ -16,7 +16,7 @@ import { ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./report.component.css']
 })
 export class ReportComponent implements OnInit {
-  
+
   reportid: Number;
   userid: Number;
   questionBankID: Number;
@@ -27,15 +27,15 @@ export class ReportComponent implements OnInit {
   scores: [];
   title: String;
 
-  
+
   reportNum: string;
   chart = [];
 
   //list: ReportService;
-  
+
   constructor(private route: ActivatedRoute,
-    private list: ReportService) { 
-        
+    private list: ReportService) {
+
   }
   makeChart(){
     var ctx = document.getElementById("barchart1");
@@ -80,9 +80,9 @@ export class ReportComponent implements OnInit {
   }
   ngOnInit() {
     this.userid = this.route.snapshot.params['userid'];
-        this.questionBankID = this.route.snapshot.params.questionBankID;       
-        console.log("id: "+ this.route.snapshot.params['questionBankID']); 
-        console.log("userid: "+this.route.snapshot.params['userid']);    
+        this.questionBankID = this.route.snapshot.params.questionBankID;
+        console.log("id: "+ this.route.snapshot.params['questionBankID']);
+        console.log("userid: "+this.route.snapshot.params['userid']);
     this.list.getSingleReport(this.userid, this.questionBankID).subscribe((
           result: IReportModel[]) => {
             console.log(result);
@@ -97,11 +97,10 @@ export class ReportComponent implements OnInit {
             console.log(this.scores);
             this.title = result[0].title;
             this.makeChart();
-            
+
           },
           error => {
             console.log('Failed to load questions. ' + error);
           });
     }
 }
-
