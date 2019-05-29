@@ -23,8 +23,8 @@ import { TestDetailsApiService } from './services/test-details-api.service';
 import { TakeTestComponent } from './take-test/take-test.component';
 import { TakeTestApiService } from './services/take-test-api.service';
 
-import {QuesBankTableComponent} from './ques-bank-table/ques-bank-table.component';
-import {QuesBankService} from './services/ques-bank.service';
+import {questionBankTableComponent} from './ques-bank-table/ques-bank-table.component';
+import {questionBankService} from './services/ques-bank.service';
 
 import { StudentdashboardComponent } from './studentdashboard/studentdashboard.component';
 
@@ -37,7 +37,7 @@ import { StudentdashboardComponent } from './studentdashboard/studentdashboard.c
     QuestionComponent,
     TestDetailsComponent,
     TakeTestComponent,
-    QuesBankTableComponent,
+    questionBankTableComponent,
 	StudentdashboardComponent
   ],
   imports: [
@@ -49,7 +49,7 @@ import { StudentdashboardComponent } from './studentdashboard/studentdashboard.c
     ModalModule.forRoot(),
   ],
   providers: [AccountApiService, QuestionApiService, TestDetailsApiService,
-    TakeTestApiService, ReportService, QuesBankService ],
+    TakeTestApiService, ReportService, questionBankService ],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

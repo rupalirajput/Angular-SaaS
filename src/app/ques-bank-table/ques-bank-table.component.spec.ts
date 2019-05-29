@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QuesBankTableComponent } from './ques-bank-table.component';
+import { questionBankTableComponent } from './ques-bank-table.component';
 
-describe('QuesBankTableComponent', () => {
-  let component: QuesBankTableComponent;
-  let fixture: ComponentFixture<QuesBankTableComponent>;
+describe('questionBankTableComponent', () => {
+  let component: questionBankTableComponent;
+  let fixture: ComponentFixture<questionBankTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuesBankTableComponent ]
+      declarations: [ questionBankTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QuesBankTableComponent);
+    fixture = TestBed.createComponent(questionBankTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -20,11 +20,11 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let quesBank of quesBanks; let i = index">
-                          <td> {{quesBank.quesBankName}} </td>
-                          <td> {{quesBank.description}} </td>
+                      <tr *ngFor="let questionBank of questionBanks; let i = index">
+                          <td> {{questionBank.questionBankName}} </td>
+                          <td> {{questionBank.description}} </td>
                           <td> 01/01/2019 </td>
-                          <td> {{quesBank.status}} </td>
+                          <td> {{questionBank.status}} </td>
                         <td>
                           <button type="button" class="btn btn-success" onclick="location.href = 'testDescription.html'">
                             Take Test

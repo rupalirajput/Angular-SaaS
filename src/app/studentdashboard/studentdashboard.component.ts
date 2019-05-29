@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {QuesBankService} from '../services/ques-bank.service';
-import IQuesbankModel from '../share/IQuestionBankModel';
+import {questionBankService} from '../services/ques-bank.service';
+import IquestionBankModel from '../share/IQuestionBankModel';
 
 @Component({
   selector: 'app-studentdashboard',
@@ -8,11 +8,11 @@ import IQuesbankModel from '../share/IQuestionBankModel';
   styleUrls: ['./studentdashboard.component.css']
 })
 export class StudentdashboardComponent implements OnInit {
-  quesBanks: IQuesbankModel[];
+  questionBanks: IquestionBankModel[];
 
-  constructor(private quesBank$: QuesBankService) {
-    quesBank$.getListsIndex().subscribe((result: IQuesbankModel[]) => {
-    this.quesBanks = result;
+  constructor(private questionBank$: questionBankService) {
+    questionBank$.getListsIndex().subscribe((result: IquestionBankModel[]) => {
+    this.questionBanks = result;
   });
 }
 

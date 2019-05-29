@@ -50,11 +50,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let quesBank of quesBanks; let i = index">
-                      <td> {{quesBank.quesBankName}} </td>
-                      <td> {{quesBank.keyConcepts}} </td>
-                      <td> {{quesBank.createdDate|date:'shortDate'}} </td>
-                      <td> {{quesBank.status}} </td>
+                    <tr *ngFor="let questionBank of questionBanks; let i = index">
+                      <td> {{questionBank.questionBankName}} </td>
+                      <td> {{questionBank.keyConcepts}} </td>
+                      <td> {{questionBank.createdDate|date:'shortDate'}} </td>
+                      <td> {{questionBank.status}} </td>
                       <td>
                         <button type="button" class="btn btn-primary"> Edit </button>
                         <button type="button" class="btn btn-danger"> Delete </button>

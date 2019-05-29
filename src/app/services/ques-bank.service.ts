@@ -5,7 +5,7 @@ import IQuestionBankModel from '../share/IQuestionBankModel';
 @Injectable({
   providedIn: 'root'
 })
-export class QuesBankService {
+export class questionBankService {
   hostUrl = 'http://localhost:1234/';
   constructor(private httpClient: HttpClient) { }
 

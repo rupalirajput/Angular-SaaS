@@ -1,6 +1,6 @@
 interface IQuestionBankModel{
     questionBankID: number;
-    quesBankName: string;
+    questionBankName: string;
     status: string;
     createdDate: Date;
     lastmodifiedDate: Date;

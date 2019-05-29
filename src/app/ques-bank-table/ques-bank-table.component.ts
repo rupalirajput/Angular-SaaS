@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {QuesBankService} from '../services/ques-bank.service';
-import IQuesbankModel from '../share/IQuestionBankModel';
+import {questionBankService} from '../services/ques-bank.service';
+import IquestionBankModel from '../share/IQuestionBankModel';
 
 @Component({
   selector: 'app-ques-bank-table',
   templateUrl: './ques-bank-table.component.html',
   styleUrls: ['./ques-bank-table.component.css']
 })
-export class QuesBankTableComponent implements OnInit {
-  quesBanks: IQuesbankModel[];
+export class questionBankTableComponent implements OnInit {
+  questionBanks: IquestionBankModel[];
 
-  constructor(private quesBank$: QuesBankService) {
-    quesBank$.getListsIndex().subscribe((result: IQuesbankModel[]) => {
-    this.quesBanks = result;
+  constructor(private questionBank$: questionBankService) {
+    questionBank$.getListsIndex().subscribe((result: IquestionBankModel[]) => {
+    this.questionBanks = result;
   });
 }
   ngOnInit() {
