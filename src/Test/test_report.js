@@ -35,7 +35,7 @@ describe('Check Report Object', function() {
     it('The Oject has known properties', function(){
         expect(requestResult[0]).to.include.keys('reportid');
         expect(requestResult[0]).to.have.property('userid');
-        expect(requestResult[0]).to.have.property('quesBankID');
+        expect(requestResult[0]).to.have.property('questionBankID');
         expect(requestResult[0]).to.have.property('score');
         expect(requestResult[0]).to.have.property('strengths');
         expect(requestResult[0]).to.have.property('weaknesses');
