@@ -134,34 +134,36 @@
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="cmp-tb-hd pull-right">
-          <button type="button" class="btn btn-success notika-btn-success waves-effect" data-toggle="modal"
-                  data-target="#addQuestion"> Add Question
+          <button type="button" class="btn btn-success notika-btn-success waves-effect" (click)="showNewQuestion()"> Add Question
           </button>
         </div>
       </div>
     </div>
 
-    <div class="modal fade" id="addQuestion" role="dialog">
+    <div bsModal #childNewQuestionModal="bs-modal" class="modal fade" id="addQuestion" role="dialog">
       <div class="modal-dialog modal-large">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" (click)="hideChildNewQuestionModal()">&times;</button>
           </div>
           <div class="modal-body">
+            <form method="post">
             <div class="row">
               <h2>Question #1</h2>
               <div class="form-example-int">
                 <div class="form-group">
                   <label>Question</label>
                   <div class="nk-int-st">
-                    <input type="text" class="form-control input-sm" placeholder="Enter Question">
+                    <input type="text" class="form-control input-sm" placeholder="Enter Question"
+                           name="questionText" required >
                   </div>
                 </div>
                 <div class="form-example-int mg-t-15">
                   <div class="form-group">
                     <label>Category</label>
                     <div class="nk-int-st">
-                      <input type="text" class="form-control input-sm" placeholder="Enter Category">
+                      <input type="text" class="form-control input-sm" placeholder="Enter Category"
+                             name="category" required >
                     </div>
                   </div>
                 </div>
@@ -173,7 +175,8 @@
                       </div>
                       <div class="col-lg-10 col-md-7 col-sm-7 col-xs-12">
                         <div class="nk-int-st">
-                          <input type="text" class="form-control input-sm" placeholder="Enter Option 1">
+                          <input type="text" class="form-control input-sm" placeholder="Enter Option 1"
+                           required >
                         </div>
                       </div>
                     </div>
@@ -187,7 +190,8 @@
                       </div>
                       <div class="col-lg-10 col-md-7 col-sm-7 col-xs-12">
                         <div class="nk-int-st">
-                          <input type="text" class="form-control input-sm" placeholder="Enter Option 1">
+                          <input type="text" class="form-control input-sm" placeholder="Enter Option 1"
+                                  required >
                         </div>
                       </div>
                     </div>
@@ -201,7 +205,8 @@
                       </div>
                       <div class="col-lg-10 col-md-7 col-sm-7 col-xs-12">
                         <div class="nk-int-st">
-                          <input type="text" class="form-control input-sm" placeholder="Enter Option 3">
+                          <input type="text" class="form-control input-sm" placeholder="Enter Option 3"
+                                 required >
                         </div>
                       </div>
                     </div>
@@ -215,7 +220,8 @@
                       </div>
                       <div class="col-lg-10 col-md-7 col-sm-7 col-xs-12">
                         <div class="nk-int-st">
-                          <input type="text" class="form-control input-sm" placeholder="Enter Option 4">
+                          <input type="text" class="form-control input-sm" placeholder="Enter Option 4"
+                                  required >
                         </div>
                       </div>
                     </div>
@@ -233,16 +239,16 @@
                             <div class="dropdown-trig-sing">
                               <ul class="dropdown-menu" role="menu">
                                 <li role="presentation">
-                                  <a role="menuitem" tabindex="-1" href="#">Option 1</a>
+                                  <a role="menuitem" tabindex="-1">Option 1</a>
                                 </li>
                                 <li role="presentation">
-                                  <a role="menuitem" tabindex="-1" href="#">Option 2</a>
+                                  <a role="menuitem" tabindex="-1">Option 2</a>
                                 </li>
                                 <li role="presentation">
-                                  <a role="menuitem" tabindex="-1" href="#">Option 3</a>
+                                  <a role="menuitem" tabindex="-1">Option 3</a>
                                 </li>
                                 <li role="presentation">
-                                  <a role="menuitem" tabindex="-1" href="#">Option 4</a>
+                                  <a role="menuitem" tabindex="-1">Option 4</a>
                                 </li>
                               </ul>
                             </div>
@@ -255,9 +261,10 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-success" (click)="addQuestion()">Save</button>
+              <button type="button" class="btn btn-danger" (click)="hideChildNewQuestionModal()">Close</button>
             </div>
+            </form>
           </div>
         </div>
       </div>
@@ -286,7 +293,7 @@
                   <td>{{question.answer}}</td>
                   <td class="nowrap" style="width: 15%">
                     <button class="btn btn-primary" (click)="editQuestionDetails(question.questionID)">Edit</button>
-                    &nbsp;&nbsp;<button type="button" class="btn btn-danger"> Delete</button>
+                    &nbsp;&nbsp;<button type="button" (click)="deleteQuestion(question.questionID)" class="btn btn-danger"> Delete</button>
                   </td>
                 </tr>
                 </tbody>
