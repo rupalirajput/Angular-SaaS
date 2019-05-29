@@ -23,8 +23,8 @@
                       <tr *ngFor="let questionBank of questionBanks; let i = index">
                           <td> {{questionBank.questionBankName}} </td>
                           <td> {{questionBank.keyConcepts}} </td>
-                          <td> {{questionBank.createdDate|date:'shortDate'}} </td>
-                          <td> {{questionBank.status}} </td>
+                          <td> {{questionBank.duration}} </td>
+                          <td> Not Completed </td>
                         <td>
                           <button type="button" class="btn btn-success" onclick="location.href = 'testDescription.html'">
                             Take Test
