@@ -27,6 +27,7 @@ export class TestDetailsComponent implements OnInit {
     test$.getQuestionBankDetails(this.questionBankID)
     .subscribe(
       result => {
+        console.log(result);
         this.questionBankName = result[0].questionBankName;
         this.duration = result[0].duration;
         this.numberOfQuestions = result[0].numberOfQuestions;
