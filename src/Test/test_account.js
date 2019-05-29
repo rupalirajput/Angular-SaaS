@@ -16,7 +16,7 @@ describe('Test Account result', function () {
 		 
     before(function (done) {
         chai.request("http://localhost:1234")
-			.get("/app/account")
+			.get("/account")
 			.end(function (err, res) {
 				requestResult = res.body;
 				response = res;

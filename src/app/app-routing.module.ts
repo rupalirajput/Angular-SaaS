@@ -10,9 +10,8 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent },
   { path: '', component: AccountComponent },
   { path: 'reports', component: ReportComponent },
-  { path: 'report/:userid/reports/:reportNum', component: ReportComponent}
+  { path: 'report/:userid/reports/:reportNum', component: ReportComponent},
 
-  { path: 'account', component: AccountComponent },
   { path: 'dashboard', component: AccountComponent },
   { path: 'question', component: QuestionComponent },
   { path: 'test/:id', component: TestDetailsComponent},

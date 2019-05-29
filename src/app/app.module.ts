@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,10 +7,9 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap';
 
-
 import { AccountComponent } from './account/account.component';
 import { AccountApiService } from './services/account-api.service';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import { ReportComponent } from './report/report.component';
 import { ReportService} from './report.service';
 import { ReportClass } from './report-class';
@@ -22,16 +21,20 @@ import { TestDetailsComponent } from './test-details/test-details.component';
 import { TestDetailsApiService } from './services/test-details-api.service';
 
 import { TakeTestComponent } from './take-test/take-test.component';
-import { TakeTestServiceApi } from './services/take-test-api.service';
+import { TakeTestApiService } from './services/take-test-api.service';
+
+import {QuesBankTableComponent} from './ques-bank-table/ques-bank-table.component';
+import {QuesBankService} from './services/ques-bank.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
-    ReportComponent
+    ReportComponent,
     QuestionComponent,
     TestDetailsComponent,
-    TakeTestComponent
+    TakeTestComponent,
+    QuesBankTableComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,10 @@ import { TakeTestServiceApi } from './services/take-test-api.service';
     ModalModule.forRoot(),
   ],
   providers: [AccountApiService, QuestionApiService, TestDetailsApiService,
-  TakeTestServiceApi,ReportService],
-  bootstrap: [AppComponent]
+    TakeTestApiService, ReportService, QuesBankService ],
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
 })
 export class AppModule { }
