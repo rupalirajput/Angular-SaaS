@@ -5,6 +5,9 @@ interface IReportModel{
     score: Number;
     strengths: String;
     weaknesses: String;
+    categories: [];
+    scores: [];
+    title: String;
 }
 
 export default IReportModel;
