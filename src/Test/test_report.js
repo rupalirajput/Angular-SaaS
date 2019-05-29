@@ -16,7 +16,7 @@ describe('Check Report Object', function() {
 
     before(function (done){
         chai.request("http://localhost:1234")
-            .get("/report/1/reports/1")
+            .get("/report/1/reports/101")
             .end(function (err,res){
                 requestResult = res.body;
                 response = res;
@@ -43,6 +43,6 @@ describe('Check Report Object', function() {
         expect(requestResult[0]).to.have.property('scores');
         expect(requestResult[0]).to.have.property('title');
     });
-    
+
 
 });
