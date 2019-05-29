@@ -21,7 +21,7 @@
 										<i class="notika-icon notika-windows"></i>
 									</div>
 									<div class="breadcomb-ctn">
-										<h2>Precalculus Chapters 1-4 Report</h2>
+										<h2>{{title}}</h2>
 										<p>Welcome to QUIZAPP<span class="bread-ntd"></span></p>
 									</div>
 								</div>
@@ -45,7 +45,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-6">
-        <p style="font-size: medium; color: #5b5b5b">Title: Precalculus Chapters 1-4</p>
+        <p style="font-size: medium; color: #5b5b5b">Title: {{title}}</p>
       </div>
       <div class="col-xs-6">
         <p style="font-size: medium; color: #5b5b5b">Strength: {{strengths}}</p>
@@ -53,7 +53,7 @@
     </div>
     <div class="row">
       <div class="col-xs-6">
-        <p style="font-size: medium; color: #5b5b5b">Overall Score: 87%</p>
+        <p style="font-size: medium; color: #5b5b5b">Overall Score: {{score}}%</p>
       </div>
       <div class="col-xs-6">
         <p style="font-size: medium; color: #5b5b5b">Improve: {{weaknesses}}</p>
@@ -93,21 +93,9 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Slopes of Lines</td>
-                            <td>19</td>
-                          </tr>
-                          <tr>
-                            <td>Equations of Lines</td>
-                            <td>7</td>
-                          </tr>
-                          <tr>
-                            <td>Horizontal and Vertical Lines</td>
-                            <td>3</td>
-                          </tr>
-                          <tr>
-                            <td>Tangent Lines</td>
-                            <td>5</td>
+                          <tr *ngFor = "let category of categories; let i = index">
+                            <td>{{category}}</td>
+                            <td>{{scores[i]}}</td>
                           </tr>
                         </tbody>
                       </table>
