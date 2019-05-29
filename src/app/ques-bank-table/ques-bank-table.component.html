@@ -52,8 +52,8 @@
                   <tbody>
                     <tr *ngFor="let quesBank of quesBanks; let i = index">
                       <td> {{quesBank.quesBankName}} </td>
-                      <td> {{quesBank.description}} </td>
-                      <td> 01/01/2019 </td>
+                      <td> {{quesBank.keyConcepts}} </td>
+                      <td> {{quesBank.createdDate|date:'shortDate'}} </td>
                       <td> {{quesBank.status}} </td>
                       <td>
                         <button type="button" class="btn btn-primary"> Edit </button>
@@ -71,4 +71,3 @@
     </div>
   </div>
   <!-- QUESTION BANK TABLE END-->
- 

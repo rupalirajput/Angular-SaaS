@@ -1,13 +1,13 @@
 interface IQuestionBankModel{
-    quesBankID: number;
-    quesBankName: string;
+    questionBankID: number;
+    questionBankName: string;
     status: string;
     createdDate: Date;
     lastmodifiedDate: Date;
     createdBy: string;
     updatedBy: string;
-    description: string;
-    noOfQues: number;
+    keyConcepts: string;
+    numberOfQuestions: number;
     duration: number;
 }
 export default IQuestionBankModel;
