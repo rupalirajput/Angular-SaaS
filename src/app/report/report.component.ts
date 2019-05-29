@@ -19,7 +19,7 @@ export class ReportComponent implements OnInit {
   
   reportid: Number;
   userid: Number;
-  quesBankID: Number;
+  questionBankID: Number;
   score: Number;
   strengths: String;
   weaknesses: String;
@@ -83,7 +83,7 @@ export class ReportComponent implements OnInit {
           result: IReportModel[]) => {
             this.reportid = result[0].reportid;
             this.userid = result[0].userid;
-            this.quesBankID = result[0].quesBankID;
+            this.questionBankID = result[0].questionBankID;
             this.score = result[0].score;
             this.strengths = result[0].strengths;
             this.weaknesses = result[0].weaknesses;
