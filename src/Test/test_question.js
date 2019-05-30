@@ -29,6 +29,7 @@ describe('Test Question result', function () {
   it('Should return an array object with more than 1 object', function () {
     expect(response).to.have.status(200);
     expect(response.body).to.have.length.above(1);
+    expect(response).to.be.an('object');
     expect(response).to.have.headers;
   });
 
