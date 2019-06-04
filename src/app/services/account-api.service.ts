@@ -7,7 +7,8 @@ import IAccountModel from '../share/IAccountModel';
 })
 export class AccountApiService {
 
-  hostUrl = 'http://localhost:1234/';
+  // hostUrl = 'http://localhost:1234/';
+  hostUrl = '/';
 
  constructor(private httpClient: HttpClient) { }
 

@@ -1,16 +1,17 @@
-interface ITakeTestModel{
-  questionBankID : Number;
-  questionBankName : String;
-  questionID : Number;
-  questionText : String;
-  category : String;
-  options :
+interface ITakeTestModel {
+  questionBankID: number;
+  questionBankName: string;
+  questionID: number;
+  questionText: string;
+  category: string;
+  options:
     [
-      String,
-      String,
-      String,
-      String
-    ];
-  answer : String;
+      string,
+      string,
+      string,
+      string
+      ];
+  answer: string;
 }
+
 export default ITakeTestModel;

@@ -15,8 +15,8 @@ describe('Test Question result', function () {
   var response;
 
   before(function (done) {
-    chai.request("http://localhost:1234")
-      .get("/questions/")
+    chai.request("/")
+      .get("questions/")
       .end(function (err, res) {
         requestResult = res.body;
         response = res;

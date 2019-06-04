@@ -1,13 +1,15 @@
-interface IReportModel{
-    reportid: Number;
-    userid: Number;
-    questionBankID: Number;
-    score: Number;
-    strengths: String;
-    weaknesses: String;
-    categories: [];
-    scores: [];
-    title: String;
+interface IReportModel {
+  reportid: number;
+  userid: number;
+  questionBankID: number;
+  score: number;
+  strengths: string;
+  weaknesses: string;
+  // noinspection JSAnnotator
+  categories: [];
+  // noinspection JSAnnotator
+  scores: [];
+  title: string;
 }
 
 export default IReportModel;

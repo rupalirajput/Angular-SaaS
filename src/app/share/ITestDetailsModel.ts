@@ -1,13 +1,14 @@
-interface ITestDetailsModel{
-  questionBankID: Number;
-  questionBankName: String;
-  duration: Number;
-  numberOfQuestions: Number;
-  keyConcepts: String;
-  status: String;
+interface ITestDetailsModel {
+  questionBankID: number;
+  questionBankName: string;
+  duration: number;
+  numberOfQuestions: number;
+  keyConcepts: string;
+  status: string;
   createdDate: Date;
   lastmodifiedDate: Date;
-  createdBy: String;
-  updatedBy: String;
+  createdBy: string;
+  updatedBy: string;
 }
+
 export default ITestDetailsModel;

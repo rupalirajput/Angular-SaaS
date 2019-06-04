@@ -12,11 +12,11 @@ import ITestDetailsModel from '../share/ITestDetailsModel';
   styleUrls: ['./test-details.component.css']
 })
 export class TestDetailsComponent implements OnInit {
-  questionBankID: String;
-  questionBankName: String;
-  duration: Number;
-  numberOfQuestions: Number;
-  keyConcepts: String;
+  questionBankID: string;
+  questionBankName: string;
+  duration: number;
+  numberOfQuestions: number;
+  keyConcepts: string;
 
   constructor(
     private route: ActivatedRoute,

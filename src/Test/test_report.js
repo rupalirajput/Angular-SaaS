@@ -15,8 +15,8 @@ describe('Check Report Object', function() {
     var response;
 
     before(function (done){
-        chai.request("http://localhost:1234")
-            .get("/report/1/reports/101")
+        chai.request("/")
+            .get("report/1/reports/101")
             .end(function (err,res){
                 requestResult = res.body;
                 response = res;

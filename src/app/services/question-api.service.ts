@@ -7,7 +7,9 @@ import IQuestionModel from '../share/IQuestionModel';
 })
 export class QuestionApiService {
 
-  hostUrl = 'http://localhost:1234/';
+  // hostUrl = 'http://localhost:1234/';
+
+  hostUrl = '/';
 
   constructor(private httpClient: HttpClient) { }
 

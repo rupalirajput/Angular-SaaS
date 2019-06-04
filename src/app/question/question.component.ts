@@ -92,8 +92,8 @@ export class QuestionComponent implements OnInit {
         });
   }
 
-  addQuestion(childNewQuestionModal: NgForm, questionBankID: number) {
-    console.log(childNewQuestionModal.value);
+  addQuestion(questionBankID: number) {
+    // console.log(childNewQuestionModal.value);
     this.question$.addQuestion(this.newQuestion, questionBankID).subscribe((result: IQuestionModel[]) => {
        console.log(result);
       },

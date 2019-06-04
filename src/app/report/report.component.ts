@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Chart } from 'src/assets/js/charts/Chart.js';
+import {Component, OnInit} from '@angular/core';
+import {Chart} from 'src/assets/js/charts/Chart.js';
 import IReportModel from '../share/IReportModel';
-import { ReportService } from '../services/report.service';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import {ReportService} from '../services/report.service';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
 import {ReportClass} from '../report-class';
-import { ElementRef, ViewChild } from '@angular/core';
-
-
+import {ElementRef, ViewChild} from '@angular/core';
 
 
 @Component({
@@ -17,34 +15,37 @@ import { ElementRef, ViewChild } from '@angular/core';
 })
 export class ReportComponent implements OnInit {
 
-  reportid: Number;
-  userid: Number;
-  questionBankID: Number;
-  score: Number;
-  strengths: String;
-  weaknesses: String;
+  reportid: number;
+  userid: number;
+  questionBankID: number;
+  score: number;
+  strengths: string;
+  weaknesses: string;
+  // noinspection JSAnnotator
   categories: [];
+  // noinspection JSAnnotator
   scores: [];
-  title: String;
+  title: string;
 
 
   reportNum: string;
   chart = [];
 
-  //list: ReportService;
+  // list: ReportService;
 
   constructor(private route: ActivatedRoute,
-    private list: ReportService) {
+              private list: ReportService) {
 
   }
-  makeChart(){
-    var ctx = document.getElementById("barchart1");
-    var barchart1 = new Chart(ctx, {
-    type: 'bar',
+
+  makeChart() {
+    const ctx = document.getElementById('barchart1');
+    const barchart1 = new Chart(ctx, {
+      type: 'bar',
       data: {
         labels: this.categories,
         datasets: [{
-          label: "",
+          label: '',
           data: this.scores,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -61,11 +62,12 @@ export class ReportComponent implements OnInit {
           borderWidth: 1
         }]
       },
-      options: { legend:{display: false},
+      options: {
+        legend: {display: false},
         scales: {
           yAxes: [{
             ticks: {
-              beginAtZero:true,
+              beginAtZero: true,
               autoSkip: false
             }
           }],
@@ -78,29 +80,30 @@ export class ReportComponent implements OnInit {
       }
     });
   }
+
   ngOnInit() {
     this.userid = this.route.snapshot.params['userid'];
-        this.questionBankID = this.route.snapshot.params.questionBankID;
-        console.log("id: "+ this.route.snapshot.params['questionBankID']);
-        console.log("userid: "+this.route.snapshot.params['userid']);
+    this.questionBankID = this.route.snapshot.params.questionBankID;
+    console.log('id: ' + this.route.snapshot.params['questionBankID']);
+    console.log('userid: ' + this.route.snapshot.params['userid']);
     this.list.getSingleReport(this.userid, this.questionBankID).subscribe((
-          result: IReportModel[]) => {
-            console.log(result);
-            this.reportid = result[0].reportid;
-            this.userid = result[0].userid;
-            this.questionBankID = result[0].questionBankID;
-            this.score = result[0].score;
-            this.strengths = result[0].strengths;
-            this.weaknesses = result[0].weaknesses;
-            this.categories = result[0].categories;
-            this.scores = result[0].scores;
-            console.log(this.scores);
-            this.title = result[0].title;
-            this.makeChart();
+      result: IReportModel[]) => {
+        console.log(result);
+        this.reportid = result[0].reportid;
+        this.userid = result[0].userid;
+        this.questionBankID = result[0].questionBankID;
+        this.score = result[0].score;
+        this.strengths = result[0].strengths;
+        this.weaknesses = result[0].weaknesses;
+        this.categories = result[0].categories;
+        this.scores = result[0].scores;
+        console.log(this.scores);
+        this.title = result[0].title;
+        this.makeChart();
 
-          },
-          error => {
-            console.log('Failed to load questions. ' + error);
-          });
-    }
+      },
+      error => {
+        console.log('Failed to load questions. ' + error);
+      });
+  }
 }

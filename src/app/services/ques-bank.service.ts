@@ -6,7 +6,10 @@ import IQuestionBankModel from '../share/IQuestionBankModel';
   providedIn: 'root'
 })
 export class questionBankService {
-  hostUrl = 'http://localhost:1234/';
+
+  // hostUrl = 'http://localhost:1234/';
+  hostUrl = '/';
+
   constructor(private httpClient: HttpClient) { }
 
   getListsIndex() {

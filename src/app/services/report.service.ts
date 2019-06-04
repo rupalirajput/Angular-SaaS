@@ -12,12 +12,12 @@ export class ReportService {
   constructor(private http: HttpClient) { }
 
   getReports(userid: string) {
-    return this.http.get( 'http://localhost:1234/' + userid + 'reports/')
+    return this.http.get( '/' + userid + 'reports/')
     .pipe(map(response => console.log(response)));
   }
 
   getSingleReport(userid: Number, questionBankID: Number) {
-    return this.http.get<IReportModel[]>( 'http://localhost:1234/report/' + userid + '/reports/' + questionBankID);
+    return this.http.get<IReportModel[]>( '/report/' + userid + '/reports/' + questionBankID);
 
 
   }

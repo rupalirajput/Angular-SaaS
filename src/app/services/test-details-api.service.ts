@@ -7,12 +7,13 @@ import ITestDetailsModel from '../share/ITestDetailsModel';
 })
 export class TestDetailsApiService {
 
-  hostUrl = 'http://localhost:1234/';
+  // hostUrl = 'http://localhost:1234/';
+
+  hostUrl = '/';
 
   constructor(private httpClient: HttpClient) { }
 
-  getQuestionBankDetails(id: String)
-  {
-    return this.httpClient.get<ITestDetailsModel[]>(this.hostUrl + 'questionbanks/' + id )
+  getQuestionBankDetails(id: string) {
+    return this.httpClient.get<ITestDetailsModel[]>(this.hostUrl + 'questionbanks/' + id);
   }
 }
