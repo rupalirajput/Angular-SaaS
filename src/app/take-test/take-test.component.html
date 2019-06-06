@@ -57,67 +57,35 @@
                               <h2>Question {{orderOfQuestionInTest}}</h2>
                               <p>{{questionText}}</p>
                             </div>
-
-                            <!-- OPTION FORM BEGIN -->
-                            <div class="row">
-                              <form id="questionForm">
-                                <fieldset>
-
-                                  <!-- OPTION 1 -->
-                                  <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                      <input type = "radio"
-                                             name = "radSize"
-                                             id = "sizeMed"
-                                             value = "{{option1}}"/>
-                                      <label style="color: black; font-weight: 400" for = "sizeMed">
-                                        {{option1}}
-                                      </label>
-                                    </div>
-                                  </div>
-
-                                  <!-- OPTION 2 -->
-                                  <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                      <input type = "radio"
-                                             name = "radSize"
-                                             id = "sizeMed"
-                                             value = "{{option2}}" />
-                                      <label style="color: black; font-weight: 400" for = "sizeMed">
-                                        {{option2}}
-                                      </label>
-                                    </div>
-                                  </div>
-
-                                  <!-- OPTION 3 -->
-                                  <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                      <input type = "radio"
-                                             name = "radSize"
-                                             id = "sizeMed"
-                                             value = "{{option3}}" />
-                                      <label style="color: black; font-weight: 400" for = "sizeMed">
-                                        {{option3}}
-                                      </label>
-                                    </div>
-                                  </div>
-
-                                  <!-- OPTION 4 -->
-                                  <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                      <input type = "radio"
-                                             name = "radSize"
-                                             id = "sizeMed"
-                                             value = "{{option4}}" />
-                                      <label style="color: black; font-weight: 400" for = "sizeMed">{{option4}}</label>
-                                    </div>
-                                  </div>
-                                </fieldset>
-                              </form>
-                              <!-- END FORM -->
-                            </div>
-                          </div>
-                      </div>
+														<div class="data-table-area">
+														  <div class="container">
+														    <div class="row">
+														      <div class="col-xs-6">
+														        <div class="data-table-list">
+														          <form #companyForm="ngForm" (ngSubmit)="onNext(companyForm.form);">
+																				<div *ngFor="let option of options">
+																					<label style="color:black">
+																						<input type="radio" name="company-radio" ngModel #radioField="ngModel" [value]='option'>
+																						{{option}}
+																					</label>
+																				</div>
+																				<!-- BACK AND NEXT BUTTONS -->
+																				<div class="row">
+																					<a href="#" class="btn btn-info col-xs-3">
+																						Back
+																					</a>
+																					<div class="col-xs-6">
+																					</div>
+																					<button class="btn btn-info col-xs-3" [disabled]="!companyForm.valid">Submit</button> 
+																				</div>
+														          </form>
+														        </div>
+														      </div>
+														    </div>
+														  </div>
+														</div>
+													</div>
+												</div>
 
                       <!-- SEARCH BAR FOR HINTS -->
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top: 2%;">
@@ -128,17 +96,6 @@
                       </div>
                     </div>
 
-                    <!-- BACK AND NEXT BUTTONS -->
-                    <div class="row">
-                      <a href="#" class="btn btn-info col-xs-1">
-                        Back
-                      </a>
-                      <div class="col-xs-4">
-                      </div>
-                      <a (click)="onNext()" class="btn btn-info col-xs-1">
-                        Next
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>

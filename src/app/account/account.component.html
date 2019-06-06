@@ -5,50 +5,6 @@
   <title>My Dashboard</title>
 </head>
 
-<body>
-<!-- BANNER BEGIN -->
-<div class="header-top-area">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <div class="logo-area">
-          <img src="" alt="" />
-          <h4>ADAPTIVE PRACTICE TEST</h4>
-        </div>
-      </div>
-      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-        <div class="header-top-menu">
-          <ul class="nav navbar-nav notika-top-nav">
-            <li ngbDropdown class="nav-item dropdown">
-              <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                <i class="fa fa-user fa-fw"></i>
-                <i class="fa fa-caret-down"></i>
-              </a>
-              <ul ngbDropdownMenu class="dropdown-menu dropdown-user">
-                <li>
-                  <a href="#">
-                    <i class="fa fa-gear fa-fw"></i>
-                    Change Password
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="loginPage.html">
-                    <i class="fa fa-sign-out fa-fw"></i>
-                    Logout
-                  </a>
-                </li>
-              </ul>
-              <!-- /.dropdown-user -->
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- BANNER END -->
-
 <!-- WELCOME BEGIN-->
 <div class="breadcomb-area">
   <div class="container">
@@ -74,6 +30,57 @@
   </div>
 </div>
 <!-- WELCOME END -->
+<!-- TEST TABLE BEGIN -->
+<div class="data-table-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="data-table-list">
+          <form #companyForm="ngForm" (ngSubmit)="submitCompany(companyForm.form);">
+
+            <input type="text"
+                   class="form-control"
+                   name="company-name"
+                   ngModel
+                   #nameField="ngModel"
+                   required
+                   minlength="3">
+            <div class="alert alert-danger" *ngIf="nameField.touched && nameField.errors">The company name is required</div>
+
+            <select class="form-control"
+                    name="company-industry"
+                    ngModel
+                    #industryField="ngModel"
+                    required>
+              <option *ngFor="let industry of industries"
+                      [value]="industry.id">
+                {{ industry.name }}
+              </option>
+            </select>
+            <label>
+              <input type="radio" name="company-radio" ngModel #radioField="ngModel" [value]='1'>
+              Red
+            </label><br/>
+            <label>
+              <input type="radio" name="company-radio" ngModel #radioField="ngModel" [value]="2">
+              Green
+            </label><br/>
+            <label>
+              <input type="radio" name="company-radio" ngModel #radioField="ngModel" [value]="3">
+              Blue
+            </label><br/>
+
+            <div class="alert alert-danger"
+                 *ngIf="industryField.touched && !industryField.valid">
+              The industry is required
+            </div>
+              <button class="btn btn-primary" [disabled]="!companyForm.valid">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- TEST TABLE BEGIN -->
 <div class="data-table-area">
@@ -113,21 +120,5 @@
   </div>
 </div>
 <!-- TEST TABLE END-->
-
-<!-- FOOTER BEGIN-->
-<div class="footer-copyright-area">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="footer-copy-right">
-          <p>Copyright © 2019. All rights reserved.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- FOOTER END -->
-
-</body>
 
 </html>
