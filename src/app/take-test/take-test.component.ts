@@ -18,12 +18,9 @@ export class TakeTestComponent implements OnInit {
   orderOfQuestionInTest: number;
   questionText: string;
   category: string;
-  option1: string;
-  option2: string;
-  option3: string;
-  option4: string;
   answer: string;
   isCorrect: number;
+  options:any;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,11 +37,14 @@ export class TakeTestComponent implements OnInit {
           this.orderOfQuestionInTest = 1;
           this.questionText = result.questionText;
           this.category = result.category;
-          this.option1 = result.options[0];
-          this.option2 = result.options[1];
-          this.option3 = result.options[2];
-          this.option4 = result.options[3];
+          this.options = result.options;
           this.answer = result.answer;
+
+          var i:any;
+          for(i=0; i<4; i++){
+            console.log(this.options[i]);
+          }
+
         },
         () => {
         },
@@ -55,7 +55,12 @@ export class TakeTestComponent implements OnInit {
 
   // Gets user's choice from available answer options
   // Passes on choice to service
-  onNext() {
+  onNext(form) {
+    console.log(form)
+    console.log(form.value['company-radio']);
+    alert('The form was submitted');
+    form.reset();
+    /*
     var val;
     var isCorrect;
     // get list of radio buttons with specified name
@@ -82,10 +87,7 @@ export class TakeTestComponent implements OnInit {
           this.orderOfQuestionInTest = this.orderOfQuestionInTest + 1;
           this.questionText = result.questionText;
           this.category = result.category;
-          this.option1 = result.options[0];
-          this.option2 = result.options[1];
-          this.option3 = result.options[2];
-          this.option4 = result.options[3];
+          this.options = result.options;
           this.answer = result.answer;
         },
         () => {
@@ -93,6 +95,7 @@ export class TakeTestComponent implements OnInit {
         () => {
         },
       );
+      */
   }
 
   ngOnInit() {
