@@ -1,11 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Chart} from 'src/assets/js/charts/Chart.js';
+import ITestAnswersModel from '../share/ITestAnswersModel';
+import IQuestionBankModel from '../share/IQuestionBankModel';
 import IReportModel from '../share/IReportModel';
 import {ReportService} from '../services/report.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {ReportClass} from '../report-class';
 import {ElementRef, ViewChild} from '@angular/core';
+import { questionBankService } from '../services/ques-bank.service';
 
 
 @Component({
@@ -14,28 +17,27 @@ import {ElementRef, ViewChild} from '@angular/core';
   styleUrls: ['./report.component.css']
 })
 export class ReportComponent implements OnInit {
-
-  reportid: number;
-  userid: number;
+  
+  testTakerID: number;
   questionBankID: number;
-  score: number;
+  testid: number;
+  score: string;
   strengths: string;
   weaknesses: string;
-  // noinspection JSAnnotator
-  categories: [];
-  // noinspection JSAnnotator
-  scores: [];
-  title: string;
+  categories: string[];
+  scores: number[];
+  title: String;
+  arrayLength: number;
+  categoryMap = new Map();
+  
 
-
-  reportNum: string;
-  chart = [];
-
-  // list: ReportService;
-
+  //grab path variables
   constructor(private route: ActivatedRoute,
-              private list: ReportService) {
-
+              private list: ReportService,
+              private qBankService: questionBankService) {
+    this.testTakerID = this.route.snapshot.params.testTakerID;
+    this.questionBankID = this.route.snapshot.params['questionBankID'];
+    this.testid = this.route.snapshot.params['testID'];
   }
 
   makeChart() {
@@ -81,7 +83,94 @@ export class ReportComponent implements OnInit {
     });
   }
 
+  getTestTitle(){
+    this.qBankService.getItems(this.questionBankID).subscribe((result:IQuestionBankModel[])=> {
+    this.title = result[0].keyConcepts;
+    })
+  }
+
+  findStrengthsAndWeaknesses(keys, values, mapSize){
+    var min = 0;
+    var max = 0;
+    
+    for (var i = 0; i < mapSize; i++){
+      this.categories[i] = keys.next().value;
+      this.scores[i] = values.next().value;
+      if (this.scores[i] < this.scores[min]){
+        min = i;
+      }
+      if (this.scores[i] > this.scores[max]){
+        max = i;
+      }
+    }
+    this.strengths = this.categories[max];
+    this.weaknesses = this.categories[min];
+  }
+
+  mapScoresAndCategories(result:ITestAnswersModel[]){
+    this.arrayLength = result.length;
+    var totalCorrect = 0;    
+    var holdNumForIncreasingMapCount = 0;
+    //loops through return object and puts scores and keywords into map
+    var category;
+    for (var i = 0; i < this.arrayLength; i++){
+      if (result[i].isCorrect == 1) 
+        totalCorrect++;
+      category = result[i].category;
+      if (this.categoryMap.has(category)){
+        if (result[i].isCorrect == 1){
+          holdNumForIncreasingMapCount = this.categoryMap.get(category);
+          holdNumForIncreasingMapCount++;
+          this.categoryMap.set(category, holdNumForIncreasingMapCount);
+        }
+      }
+      else {
+        if (result[i].isCorrect == 1)
+          this.categoryMap.set(category, 1);
+        else
+          this.categoryMap.set(category, 0);
+      }
+    }
+    return totalCorrect;
+  }
+
+  updateTotalScore(totalCorrect){
+    var percentageCorrect = (totalCorrect / this.arrayLength) * 100;
+    this.score = percentageCorrect.toFixed(2);
+  }
+
   ngOnInit() {
+    
+    this.getTestTitle();
+
+    this.list.getTestReportDetails(this.testTakerID, this.questionBankID,
+    this.testid).subscribe((result:ITestAnswersModel[]) => {
+        
+      var totalCorrect = this.mapScoresAndCategories(result);
+        
+      //puts map categories and scores into arrays for chart
+      var keys = this.categoryMap.keys();
+      var values = this.categoryMap.values();
+      var mapSize = this.categoryMap.size;
+      this.scores = new Array(mapSize);
+      this.categories = new Array(mapSize);
+
+      this.findStrengthsAndWeaknesses(keys, values, mapSize);
+      this.updateTotalScore(totalCorrect);
+      this.makeChart();
+    },
+    error => {
+      console.log('failed to get test details ' + error);
+    });
+  }
+}
+
+  // For old reports
+
+  //reportid: number;
+  //userid: number;
+
+  /*ngOnInit() {
     this.userid = this.route.snapshot.params['userid'];
     this.questionBankID = this.route.snapshot.params.questionBankID;
     console.log('id: ' + this.route.snapshot.params['questionBankID']);
@@ -105,5 +194,4 @@ export class ReportComponent implements OnInit {
       error => {
         console.log('Failed to load questions. ' + error);
       });
-  }
-}
+  }*/
