@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(private user$: LoginService, private router: Router) {}
 
   public signinWithGoogle() {
-    localStorage.setItem('user_email', 'rupalirajput');
-    this.router.navigate(['/professor_dashboard/']);
+    // localStorage.setItem('user_email', 'rupalirajput');
+    // this.router.navigate(['/professor_dashboard/']);
 
     this.user$.getGoogleLogin().subscribe((result: string) => {
       this.email = result;
