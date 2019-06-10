@@ -27,6 +27,7 @@ import {questionBankTableComponent} from './ques-bank-table/ques-bank-table.comp
 import {questionBankService} from './services/ques-bank.service';
 
 import { StudentdashboardComponent } from './studentdashboard/studentdashboard.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { StudentdashboardComponent } from './studentdashboard/studentdashboard.c
     TestDetailsComponent,
     TakeTestComponent,
     questionBankTableComponent,
-	StudentdashboardComponent
+    StudentdashboardComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

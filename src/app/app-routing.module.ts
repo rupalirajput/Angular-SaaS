@@ -7,7 +7,7 @@ import {QuestionComponent} from './question/question.component';
 import { TestDetailsComponent } from './test-details/test-details.component';
 import { TakeTestComponent } from './take-test/take-test.component';
 import {StudentdashboardComponent} from './studentdashboard/studentdashboard.component';
-
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'account', component: AccountComponent },
@@ -19,11 +19,12 @@ const routes: Routes = [
   { path: 'test/detail/:id', component: TestDetailsComponent},
   { path: 'test/:questionbankid', component: TakeTestComponent },
   { path: 'student_dashboard', component: StudentdashboardComponent },
-  { path: '', component: questionBankTableComponent }
+  { path: '', component: questionBankTableComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: true, onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

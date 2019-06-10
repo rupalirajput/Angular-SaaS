@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'QuizApp';
+  userEmail: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userEmail = localStorage.getItem('user_email');
+  }
+
+  logout(): void {
+    console.log('Logout');
+    localStorage.setItem('isLoggedIn', 'false');
+    localStorage.removeItem('user_email');
+    this.router.navigate(['/login']);
+  }
 }

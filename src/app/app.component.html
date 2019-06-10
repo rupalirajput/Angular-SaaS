@@ -19,12 +19,12 @@
             <h4>ADAPTIVE PRACTICE TEST</h4>
           </div>
         </div>
-        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" *ngIf="userEmail">
           <div class="header-top-menu">
             <ul class="nav navbar-nav notika-top-nav">
               <li ngbDropdown class="nav-item dropdown">
                 <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                  <i class="fa fa-user fa-fw"></i>
+                  <i class="fa fa-user fa-fw"></i> Hi, {{userEmail}}
                   <i class="fa fa-caret-down"></i>
                 </a>
                 <ul ngbDropdownMenu class="dropdown-menu dropdown-user">
@@ -36,13 +36,9 @@
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a href="loginPage.html">
-                      <i class="fa fa-sign-out fa-fw"></i>
-                      Logout
-                    </a>
+                    <a href="javascript:void(0);" (click)="logout()">Logout</a>
                   </li>
                 </ul>
-                <!-- /.dropdown-user -->
               </li>
             </ul>
           </div>

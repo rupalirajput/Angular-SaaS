@@ -19,4 +19,5 @@ export class questionBankTableComponent implements OnInit {
 }
   ngOnInit() {
   }
+
 }
