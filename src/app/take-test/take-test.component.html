@@ -62,21 +62,21 @@
 														    <div class="row">
 														      <div class="col-xs-6">
 														        <div class="data-table-list">
-														          <form #companyForm="ngForm" (ngSubmit)="onNext(companyForm.form);">
+														          <form #answerForm="ngForm" (ngSubmit)="submitAnswer(answerForm.form);">
 																				<div *ngFor="let option of options">
 																					<label style="color:black">
-																						<input type="radio" name="company-radio" ngModel #radioField="ngModel" [value]='option'>
+																						<input type="radio" name="answer" ngModel required #radioField="ngModel" [value]='option'>
 																						{{option}}
 																					</label>
 																				</div>
 																				<!-- BACK AND NEXT BUTTONS -->
 																				<div class="row">
-																					<a href="#" class="btn btn-info col-xs-3">
+																submit					<a href="#" class="btn btn-info col-xs-3">
 																						Back
 																					</a>
 																					<div class="col-xs-6">
 																					</div>
-																					<button class="btn btn-info col-xs-3" [disabled]="!companyForm.valid">Submit</button> 
+																					<button class="btn btn-info col-xs-3" [disabled]="!answerForm.valid">Next</button>
 																				</div>
 														          </form>
 														        </div>

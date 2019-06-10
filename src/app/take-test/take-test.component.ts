@@ -13,14 +13,14 @@ import ITakeTestModel from '../share/ITakeTestModel';
 export class TakeTestComponent implements OnInit {
   questionBankID: string;
   questionBankName: string;
-  testTakerID: number;
-  currentQuestionID: number;
+  testTakerID = "2";
+  currentQuestionID: Number;
   orderOfQuestionInTest: number;
   questionText: string;
   category: string;
   answer: string;
-  isCorrect: number;
   options:any;
+  testID = "101";
 
   constructor(
     private route: ActivatedRoute,
@@ -44,7 +44,6 @@ export class TakeTestComponent implements OnInit {
           for(i=0; i<4; i++){
             console.log(this.options[i]);
           }
-
         },
         () => {
         },
@@ -55,47 +54,42 @@ export class TakeTestComponent implements OnInit {
 
   // Gets user's choice from available answer options
   // Passes on choice to service
-  onNext(form) {
-    console.log(form)
-    console.log(form.value['company-radio']);
-    alert('The form was submitted');
-    form.reset();
-    /*
-    var val;
-    var isCorrect;
-    // get list of radio buttons with specified name
-    var radios = document.getElementById('questionForm')['radSize'];
-
-    // loop through list of radio buttons
-    for (var i=0, len=radios.length; i<len; i++) {
-        if ( radios[i].checked ) { // radio checked?
-            val = radios[i].value; // if so, hold its value in val
-            break; // and break out of for loop
-        }
+  submitAnswer(form) {
+    // (if answer is) correct: 1 == true, 0 == false
+    var correct: Number;
+    console.log(form.value['answer']);
+    var answer = form.value['answer'];
+    this.orderOfQuestionInTest++;
+    if (answer === this.answer){
+      correct = 1;
+    } else{
+      correct = 0;
     }
-    if(val != this.answer){
-      isCorrect = 0;
-    }
-    else{
-      isCorrect = 1;
-    }
-    this.test$.submitAnswer(val, isCorrect, this.questionBankID)
-      .subscribe(
-        result => {
-          this.questionBankName = result.questionBankName;
-          this.currentQuestionID = result.questionID;
-          this.orderOfQuestionInTest = this.orderOfQuestionInTest + 1;
-          this.questionText = result.questionText;
-          this.category = result.category;
-          this.options = result.options;
-          this.answer = result.answer;
-        },
-        () => {
-        },
-        () => {
-        },
-      );
-      */
+    var testData = {
+      testID : this.testID,
+      testTakerID : this.testTakerID,
+      questionBankID : this.questionBankID,
+      questionID : this.currentQuestionID,
+      orderOfQuestionInTest : this.orderOfQuestionInTest,
+      category : this.category,
+      isCorrect : correct
+    };
+    this.test$.submitAnswer(testData, this.questionBankID)
+    .subscribe(
+      result => {
+        this.questionBankName = result.questionBankName;
+        this.currentQuestionID = result.questionID;
+        this.orderOfQuestionInTest = this.orderOfQuestionInTest + 1;
+        this.questionText = result.questionText;
+        this.category = result.category;
+        this.options = result.options;
+        this.answer = result.answer;
+      },
+      () => {
+      },
+      () => {
+      },
+    );
   }
 
   ngOnInit() {
