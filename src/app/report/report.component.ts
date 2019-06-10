@@ -141,7 +141,7 @@ export class ReportComponent implements OnInit {
   ngOnInit() {
     
     this.getTestTitle();
-    console.log('testTakerid: ' + this.testTakerID);
+    
     this.list.getTestReportDetails(this.testTakerID, this.questionBankID).subscribe((result:ITestAnswersModel[]) => {
         
       var totalCorrect = this.mapScoresAndCategories(result);
