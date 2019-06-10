@@ -37,7 +37,6 @@ export class ReportComponent implements OnInit {
               private qBankService: questionBankService) {
     this.testTakerID = this.route.snapshot.params.testTakerID;
     this.questionBankID = this.route.snapshot.params['questionBankID'];
-    this.testid = this.route.snapshot.params['testID'];
   }
 
   makeChart() {
@@ -142,9 +141,8 @@ export class ReportComponent implements OnInit {
   ngOnInit() {
     
     this.getTestTitle();
-
-    this.list.getTestReportDetails(this.testTakerID, this.questionBankID,
-    this.testid).subscribe((result:ITestAnswersModel[]) => {
+    console.log('testTakerid: ' + this.testTakerID);
+    this.list.getTestReportDetails(this.testTakerID, this.questionBankID).subscribe((result:ITestAnswersModel[]) => {
         
       var totalCorrect = this.mapScoresAndCategories(result);
         

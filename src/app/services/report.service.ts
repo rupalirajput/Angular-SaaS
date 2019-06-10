@@ -22,10 +22,9 @@ export class ReportService {
     return this.http.get<IReportModel[]>( this.hostUrl + 'report/' + userid + '/reports/' + questionBankID);
   }
 
-  getTestReportDetails(testTakerID: Number, questionBankID: Number,
-    testID: Number) {
+  getTestReportDetails(testTakerID: Number, questionBankID: Number) {
       return this.http.get<ITestAnswersModel[]>(this.hostUrl + 'report/' + testTakerID +
-      '/reports/' + questionBankID + '/testID/' + testID);
+      '/reports/' + questionBankID);
     }
 
 }
