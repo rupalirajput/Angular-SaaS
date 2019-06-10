@@ -7,8 +7,8 @@ import IQuestionBankModel from '../share/IQuestionBankModel';
 })
 export class questionBankService {
 
-  hostUrl = 'http://localhost:1234/';
-  //hostUrl = '/';
+  // hostUrl = 'http://localhost:1234/';
+  hostUrl = '/';
 
   constructor(private httpClient: HttpClient) { }
 

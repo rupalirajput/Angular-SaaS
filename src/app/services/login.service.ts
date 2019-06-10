@@ -6,8 +6,8 @@ import {HttpClient} from '@angular/common/http';
 })
 export class LoginService {
 
-  hostUrl = 'http://localhost:1234/';
-  // hostUrl = '/';
+  // hostUrl = 'http://localhost:1234/';
+   hostUrl = '/';
 
   constructor(private httpClient: HttpClient) { }
 

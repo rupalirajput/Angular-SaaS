@@ -26,7 +26,9 @@ export class LoginComponent implements OnInit {
     });
   }
   ngOnInit() {
+    if (localStorage.getItem('user_email') != null) {
+      this.router.navigate(['/professor_dashboard/']);
+    }
   }
-
 }
 

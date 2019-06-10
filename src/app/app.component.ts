@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.userEmail = localStorage.getItem('user_email');
+    console.log(this.userEmail);
+
   }
 
   logout(): void {
