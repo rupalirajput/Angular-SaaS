@@ -39,11 +39,6 @@ export class TakeTestComponent implements OnInit {
           this.category = result.category;
           this.options = result.options;
           this.answer = result.answer;
-
-          var i:any;
-          for(i=0; i<4; i++){
-            console.log(this.options[i]);
-          }
         },
         () => {
         },
@@ -57,9 +52,7 @@ export class TakeTestComponent implements OnInit {
   submitAnswer(form) {
     // (if answer is) correct: 1 == true, 0 == false
     var correct: Number;
-    console.log(form.value['answer']);
     var answer = form.value['answer'];
-    this.orderOfQuestionInTest++;
     if (answer === this.answer){
       correct = 1;
     } else{
@@ -77,6 +70,11 @@ export class TakeTestComponent implements OnInit {
     this.test$.submitAnswer(testData, this.questionBankID)
     .subscribe(
       result => {
+      },() => {},() => {},
+    );
+    this.test$.getNextQuestion(this.questionBankID, this.orderOfQuestionInTest, this.testID)
+    .subscribe(
+      result => {
         this.questionBankName = result.questionBankName;
         this.currentQuestionID = result.questionID;
         this.orderOfQuestionInTest = this.orderOfQuestionInTest + 1;
@@ -84,11 +82,7 @@ export class TakeTestComponent implements OnInit {
         this.category = result.category;
         this.options = result.options;
         this.answer = result.answer;
-      },
-      () => {
-      },
-      () => {
-      },
+      },() => {},() => {},
     );
   }
 

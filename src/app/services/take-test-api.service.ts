@@ -21,10 +21,10 @@ export class TakeTestApiService {
 
   getNextQuestion(questionBankID: string, orderOfQuestionInTest: Number, testID: string){
     return this.httpClient.get<IQuestionsModel>(this.hostUrl + 'test/' + questionBankID + '/' + orderOfQuestionInTest + '/' + testID);
+
   }
 
   submitAnswer(testData: any, questionBankID: String){
-    this.httpClient.post<IQuestionsModel>(this.hostUrl + 'test/' + questionBankID, testData);
-    return this.getNextQuestion(testData.questionBankID, testData.orderOfQuestionInTest, testData.testID);
+    return this.httpClient.post<IQuestionsModel>(this.hostUrl + 'test/' + questionBankID, testData);
   }
 }
