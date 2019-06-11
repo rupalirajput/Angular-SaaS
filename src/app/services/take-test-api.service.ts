@@ -20,7 +20,7 @@ export class TakeTestApiService {
   }
 
   getNextQuestion(questionBankID: string, orderOfQuestionInTest: Number, testID: string){
-    return this.httpClient.get<IQuestionsModel>(this.hostUrl + 'test/' + questionBankID + '/' + orderOfQuestionInTest + '/' + testID);
+    return this.httpClient.get<IQuestionsModel>(this.hostUrl + 'test/' + questionBankID + '/' + testID);
 
   }
 

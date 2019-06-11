@@ -69,20 +69,21 @@ export class TakeTestComponent implements OnInit {
     };
     this.test$.submitAnswer(testData, this.questionBankID)
     .subscribe(
-      result => {
-      },() => {},() => {},
-    );
-    this.test$.getNextQuestion(this.questionBankID, this.orderOfQuestionInTest, this.testID)
-    .subscribe(
-      result => {
-        this.questionBankName = result.questionBankName;
-        this.currentQuestionID = result.questionID;
-        this.orderOfQuestionInTest = this.orderOfQuestionInTest + 1;
-        this.questionText = result.questionText;
-        this.category = result.category;
-        this.options = result.options;
-        this.answer = result.answer;
-      },() => {},() => {},
+      result => {},
+      () => {
+        this.test$.getNextQuestion(this.questionBankID, this.orderOfQuestionInTest, this.testID)
+        .subscribe(
+          result => {
+            this.questionBankName = result.questionBankName;
+            this.currentQuestionID = result.questionID;
+            this.orderOfQuestionInTest = this.orderOfQuestionInTest + 1;
+            this.questionText = result.questionText;
+            this.category = result.category;
+            this.options = result.options;
+            this.answer = result.answer;
+          }
+        );
+      }
     );
   }
 
