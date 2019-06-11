@@ -22,8 +22,8 @@ export class ReportComponent implements OnInit {
   questionBankID: number;
   testid: number;
   score: string;
-  strengths: string;
-  weaknesses: string;
+  strengths: string[];
+  weaknesses: string[];
   categories: string[];
   scores: number[];
   title: String;
@@ -102,8 +102,22 @@ export class ReportComponent implements OnInit {
         max = i;
       }
     }
-    this.strengths = this.categories[max];
-    this.weaknesses = this.categories[min];
+    var strengthCounter = 0;
+    var weaknessCounter = 0; 
+    this.strengths = new Array();
+    this.weaknesses = new Array();
+    
+    for (var i = 0; i < mapSize; i++){
+      if (this.scores[i] == this.scores[min])
+        this.weaknesses[weaknessCounter++] = this.categories[i];
+    }
+    for (var i = 0; i < mapSize; i++){
+      if (this.scores[i] == this.scores[max])
+        this.strengths[strengthCounter++] = this.categories[i];
+    }
+    
+    //this.strengths = this.categories[max];
+    //this.weaknesses = this.categories[min];
   }
 
   mapScoresAndCategories(result:ITestAnswersModel[]){
