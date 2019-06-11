@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import IAccountModel from '../share/IAccountModel';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +14,9 @@ export class LoginService {
 
   getGoogleLogin() {
     return this.httpClient.get<string>( this.hostUrl + 'auth/google');
+  }
+
+  getLoginDetails(email: string) {
+    return this.httpClient.get<IAccountModel[]>( this.hostUrl + 'account/' + email);
   }
 }

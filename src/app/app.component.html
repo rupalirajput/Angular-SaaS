@@ -17,7 +17,6 @@
           <div class="logo-area">
             <img src="" alt="" />
             <h4>ADAPTIVE PRACTICE TEST</h4>
-            Hi, {{userEmail}}
           </div>
         </div>
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" *ngIf="userEmail">
@@ -25,7 +24,7 @@
             <ul class="nav navbar-nav notika-top-nav">
               <li ngbDropdown class="nav-item dropdown">
                 <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                  <i class="fa fa-user fa-fw"></i> Hi, {{userEmail}}
+                  <i class="fa fa-user fa-fw"></i> Hi, {{firstName}}
                   <i class="fa fa-caret-down"></i>
                 </a>
                 <ul ngbDropdownMenu class="dropdown-menu dropdown-user">

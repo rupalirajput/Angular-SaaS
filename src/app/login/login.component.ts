@@ -13,19 +13,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private user$: LoginService, private router: Router) {}
 
-  public signinWithGoogle() {
-    // localStorage.setItem('user_email', 'rupalirajput');
-    // this.router.navigate(['/professor_dashboard/']);
-
-    this.user$.getGoogleLogin().subscribe((result: string) => {
-      this.email = result;
-      console.log(result);
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('user_email', this.email);
-      this.router.navigate(['/professor_dashboard/']);
-    });
-  }
   ngOnInit() {
+    // localStorage.clear();
     if (localStorage.getItem('user_email') != null) {
       this.router.navigate(['/professor_dashboard/']);
     }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {questionBankService} from '../services/ques-bank.service';
 import IquestionBankModel from '../share/IQuestionBankModel';
 import IQuestionModel from '../share/IQuestionModel';
+import {Router} from '@angular/router';
 import { error } from 'util';
 import { refreshDescendantViews } from '@angular/core/src/render3/instructions';
 
@@ -14,7 +15,7 @@ export class questionBankTableComponent implements OnInit {
   questionBanks: IquestionBankModel[];
   selectedQuestionBankId: number;
 
-  constructor(private questionBank$: questionBankService) {
+  constructor(private questionBank$: questionBankService, private router: Router) {
     questionBank$.getListsIndex().subscribe((result: IquestionBankModel[]) => {
     this.questionBanks = result;
   });
@@ -33,7 +34,7 @@ export class questionBankTableComponent implements OnInit {
       error =>
       {
         console.log(error);
-      }    
+      }
     );
     this.updateSuccessful();
   }
@@ -47,6 +48,15 @@ export class questionBankTableComponent implements OnInit {
   }
   }
   ngOnInit() {
+    if (localStorage.getItem('user_role') != null) {
+      switch (localStorage.getItem('user_role') ) {
+        case 'professor':
+          this.router.navigate(['/professor_dashboard/']);
+          break;
+        case 'student':
+          this.router.navigate(['/student_dashboard/']);
+          break;
+      }
+    }
   }
-
 }
