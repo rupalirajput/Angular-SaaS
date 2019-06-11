@@ -58,7 +58,7 @@
                       <td class="nowrap" style="width: 25%">
                         <button type="button" class="btn btn-primary" [routerLink]="['/create_question/' + questionBank.questionBankID]"> Edit </button>
                         &nbsp;&nbsp;<button type="button" class="btn btn-danger"> Delete </button>
-                        &nbsp;&nbsp;<button type="button" class="btn btn-light"> Publish </button>
+                        &nbsp;&nbsp;<button type="button" class="btn btn-light" (click) ="publishQuestionBank(questionBank.questionBankID)" > Publish </button>
                       </td>
                     </tr>
                   </tbody>

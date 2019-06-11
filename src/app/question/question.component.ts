@@ -7,6 +7,10 @@ import IquestionBankModel from '../share/IQuestionBankModel';
 import {questionBankService} from '../services/ques-bank.service';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
+import IQuestionBankModel from '../share/IQuestionBankModel';
+import { jsonpCallbackContext } from '@angular/common/http/src/module';
+import { post } from 'selenium-webdriver/http';
+import { error } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-question',
@@ -30,6 +34,7 @@ export class QuestionComponent implements OnInit {
   newQuestionLoaded = false;
   animation = true;
   public newQuestion: IQuestionModel;
+  public newQuestionBank: IQuestionBankModel;
 
   constructor(
     private route: ActivatedRoute,
@@ -112,6 +117,7 @@ export class QuestionComponent implements OnInit {
       });
   }
 
+
   public hideChildNewQuestionModal(): void {
     this.childNewQuestionModal.hide();
   }
@@ -119,5 +125,41 @@ export class QuestionComponent implements OnInit {
   public hideChildModal(): void {
     this.childModal.hide();
   }
+
+  public addQuestionBank(questionBankName, duration, numberofQuestion){
+    var requestbody = {
+      questionBankName: questionBankName,
+      duration: duration,
+      numberofQuestion: numberofQuestion,
+      createdDate: new Date(),
+      lastmodifiedDate: new Date(),
+      createdBy: 'Prof. Hanks',
+      updatedBy: 'Prof. Hanks',
+      status: 'Draft',
+      keyConcepts: questionBankName
+    };
+   /*  this.newQuestionBank.questionBankName = questionBankName;
+    this.newQuestionBank.numberOfQuestions = numberofQuestion;
+    this.newQuestionBank.duration = duration;
+    console.log(JSON.stringify(this.newQuestionBank)); */
+    console.log(JSON.stringify(requestbody));
+    console.log(requestbody);
+    this.questionBank$.addQuestionBankService(requestbody).subscribe(
+      success =>{
+        console.log('Updated Successfully');
+      } 
+    );
+    this.updateSuccessful();
+  }
+
+  public updateSuccessful()
+  {
+    if (confirm("Question Bank Created Successfully !!")) {
+      window.location.reload();
+    } else {
+      close();
+  }
+  }
+  
 
 }
