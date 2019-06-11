@@ -18,6 +18,7 @@
     "@angular/core": "~7.2.0",
     "@angular/forms": "~7.2.0",
     "@angular/http": "latest",
+    "@angular/material": "latest",
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
@@ -27,15 +28,15 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "core-js": "^2.5.4",
+    "g": "^2.0.1",
     "jquery": "^3.4.1",
     "mocha": "^6.1.4",
+    "ngx-bootstrap": "latest",
     "q": "^1.5.1",
     "rxjs": "~6.3.3",
+    "src": "latest",
     "tslib": "^1.9.0",
-    "zone.js": "~0.8.26",
-    "@angular/material": "latest",
-    "ngx-bootstrap": "latest",
-    "src": "latest"
+    "zone.js": "~0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
