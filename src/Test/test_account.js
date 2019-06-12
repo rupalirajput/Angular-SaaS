@@ -11,14 +11,21 @@ chai.use(chaiHttp);
 
 describe('Test Account result', function () {
 
+	var user = {
+		email: 'chrischoi5@gmail.com',
+		password: 'TKLAnrsGAm2e2K9'
+	};
 	var requestResult;
 	var response;
 		 
     before(function (done) {
-        chai.request("/")
-			.get("account")
+        chai.request("expressquizapp.azurewebsites.net")
+			.get("/account")
+			.send(user)
 			.end(function (err, res) {
+				console.log(res);
 				requestResult = res.body;
+				//console.log(requestResult);
 				response = res;
                 expect(err).to.be.null;
                 expect(res).to.have.status(200);

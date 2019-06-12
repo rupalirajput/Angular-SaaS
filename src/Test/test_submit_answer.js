@@ -6,16 +6,21 @@ var assert = chai.assert;
 var expect = chai.expect;
 var should = chai.should();
 
-var http = require('http');
+var http = require('https');
 chai.use(chaiHttp);
 
 describe('Check post method when submitting test answers', function() {
 
     var response;
+    var user = {
+		email: 'chrischoi5@gmail.com',
+		password: 'TKLAnrsGAm2e2K9'
+	};
 
    before (function (done){
-       chai.request("expressquizapp.azurewebsites.net/#/")
-           .post("test/101")
+       chai.request("expressquizapp.azurewebsites.net")
+           .post("/test/101")
+           .send(user)
            .send({
                 testID: 1,
                 testTakerID: 1,
