@@ -33,6 +33,7 @@ export class QuestionComponent implements OnInit {
   selectedQuestionBankLoaded = false;
   newQuestionLoaded = false;
   animation = true;
+  OptionSelected: string;
   public newQuestion: IQuestionModel;
   public newQuestionBank: IQuestionBankModel;
 
@@ -79,7 +80,7 @@ export class QuestionComponent implements OnInit {
           console.log('Failed to load questions bank. ' + error);
         });
     }
-  } 
+  }
 
   updateQuestionBank(questionBankName, duration, numberofQuestion) {
     var QuestionBankId = this.route.snapshot.params.questionBankID;
@@ -95,7 +96,7 @@ export class QuestionComponent implements OnInit {
     this.questionBank$.updateQuestionBankService(requestbody,QuestionBankId).subscribe(
       success =>{
         console.log('Updated Successfully');
-      } 
+      }
     );
   }
 
@@ -134,7 +135,7 @@ export class QuestionComponent implements OnInit {
         options: [option1, option2, option3, option4],
         answer: OptionSelected
       };
-      
+
       //console.log(questionBankID,question,category,option1,option2,option3,option4);
       console.log(OptionSelected);
       console.log(questionBankID);
@@ -142,7 +143,7 @@ export class QuestionComponent implements OnInit {
       this.question$.addQuestion(questionBody,questionBankID).subscribe(
         success =>{
           console.log('Updated Successfully');
-        } 
+        }
       );
       this.updateSuccessful();
   }
@@ -162,7 +163,7 @@ export class QuestionComponent implements OnInit {
         options: [option1, option2, option3, option4],
         answer: OptionSelected
       };
-      
+
       //console.log(questionBankID,question,category,option1,option2,option3,option4);
       console.log(OptionSelected);
       console.log(questionID);
@@ -170,7 +171,7 @@ export class QuestionComponent implements OnInit {
       this.question$.updateQuestion(questionBody,questionID).subscribe(
         success =>{
           console.log('Updated Successfully');
-        } 
+        }
       );
       this.updateSuccessful();
   }
@@ -215,7 +216,7 @@ export class QuestionComponent implements OnInit {
     this.questionBank$.addQuestionBankService(requestbody).subscribe(
       success =>{
         console.log('Updated Successfully');
-      } 
+      }
     );
     this.updateSuccessful();
   }
@@ -228,6 +229,6 @@ export class QuestionComponent implements OnInit {
       close();
   }
   }
-  
+
 
 }
