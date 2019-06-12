@@ -12,12 +12,12 @@ chai.use(chaiHttp);
 describe('Test Account result', function () {
 
 	var user = {
-		email: 'chrischoi5@gmail.com',
-		password: 'TKLAnrsGAm2e2K9'
+		email: 'hladera13@gmail.com',
+		password: 'K5@8G%43bX!g@%c3%'
 	};
 	var requestResult;
 	var response;
-		 
+
     before(function (done) {
         chai.request("expressquizapp.azurewebsites.net")
 			.get("/account")
@@ -32,13 +32,13 @@ describe('Test Account result', function () {
 				done();
 			});
         });
-    
+
     it('Should return an array object with more than 1 object', function (){
 		expect(response).to.have.status(200);
 		expect(response.body).to.have.length.above(1);
 		expect(response).to.have.headers;
     });
-    
+
 	it('The first entry in the array has known properties', function(){
 	    expect(requestResult[0]).to.include.keys('username');
 	    expect(requestResult[0]).to.have.property('_id');
@@ -57,6 +57,6 @@ describe('Test Account result', function () {
 				}
 				return true;
 			});
-	});	
-	
+	});
+
 });
