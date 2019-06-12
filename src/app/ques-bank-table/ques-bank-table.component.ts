@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {questionBankService} from '../services/ques-bank.service';
 import IquestionBankModel from '../share/IQuestionBankModel';
 import IQuestionModel from '../share/IQuestionModel';
-import {Router} from '@angular/router';
-import { error } from 'util';
-import { refreshDescendantViews } from '@angular/core/src/render3/instructions';
+import {ActivatedRoute, Router} from '@angular/router';
+import {error} from 'util';
+import {refreshDescendantViews} from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-ques-bank-table',
@@ -15,48 +15,41 @@ export class questionBankTableComponent implements OnInit {
   questionBanks: IquestionBankModel[];
   selectedQuestionBankId: number;
 
-  constructor(private questionBank$: questionBankService, private router: Router) {
+  constructor(private questionBank$: questionBankService, private router: Router, private route: ActivatedRoute) {
     questionBank$.getListsIndex().subscribe((result: IquestionBankModel[]) => {
-    this.questionBanks = result;
-  });
-}
+      this.questionBanks = result;
+    });
+  }
 
-  public publishQuestionBank(questionBankID)
-  {
-    var requesbody ={
+  public publishQuestionBank(questionBankID) {
+    var requesbody = {
       status: 'Published',
     };
     console.log(requesbody);
-    this.questionBank$.updateQuestionBankService(requesbody,questionBankID).subscribe(
-      success =>{
+    this.questionBank$.updateQuestionBankService(requesbody, questionBankID).subscribe(
+      success => {
         console.log('Updated Successfully');
-    },
-      error =>
-      {
+      },
+      error => {
         console.log(error);
       }
     );
     this.updateSuccessful();
   }
 
-  public updateSuccessful()
-  {
-    if (confirm("Updated Successfully !!")) {
+  public updateSuccessful() {
+    if (confirm('Updated Successfully !!')) {
       window.location.reload();
     } else {
       close();
-  }
-  }
-  ngOnInit() {
-    if (localStorage.getItem('user_role') != null) {
-      switch (localStorage.getItem('user_role') ) {
-        case 'professor':
-          this.router.navigate(['/professor_dashboard/']);
-          break;
-        case 'student':
-          this.router.navigate(['/student_dashboard/']);
-          break;
-      }
     }
+  }
+
+  ngOnInit() {
+    // console.log(this.route.snapshot.params.user.split('?')[1]);
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('user_role', 'professor');
+    localStorage.setItem('user_id', this.route.snapshot.params.user.split('?')[0]);
+    localStorage.setItem('user_name', this.route.snapshot.params.user.split('?')[1]);
   }
 }
