@@ -11,7 +11,7 @@ import IAccountModel from './share/IAccountModel';
 export class AppComponent implements OnInit {
   title = 'QuizApp';
   userName: string;
-  userId: number;
+  userId: string;
   userRole: string;
 
   constructor(private user$: LoginService, private router: Router) { }
