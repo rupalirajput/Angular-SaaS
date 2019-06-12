@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import IQuestionModel from '../share/IQuestionModel';
+
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionApiService {
 
-  // hostUrl = 'http://localhost:1234/';
+  hostUrl = 'http://localhost:1234/';
 
-  hostUrl = '/';
+  //hostUrl = '/';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -25,12 +29,12 @@ export class QuestionApiService {
     return this.httpClient.get<IQuestionModel[]>( this.hostUrl + 'questions/' + index);
   }
 
-  addQuestion(question: IQuestionModel, questionBankID: number) {
-    return this.httpClient.post(this.hostUrl + 'questions/bank/' + questionBankID,  JSON.stringify(question));
+  addQuestion(question, questionBankID: number) {
+    return this.httpClient.post(this.hostUrl + 'questions/bank/' + questionBankID,  JSON.stringify(question),httpOptions);
   }
 
-  updateQuestion(question: IQuestionModel) {
-    return this.httpClient.put(this.hostUrl + 'questions/' + question.questionID,  JSON.stringify(question));
+  updateQuestion(question, questionID: number ) {
+    return this.httpClient.put(this.hostUrl + 'question/' + questionID,  JSON.stringify(question),httpOptions);
   }
 
   deleteQuestion(questionID: number) {

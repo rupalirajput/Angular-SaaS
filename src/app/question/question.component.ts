@@ -46,12 +46,14 @@ export class QuestionComponent implements OnInit {
   ngOnInit() {
     this.selectedQuestionBankId = this.route.snapshot.params.questionBankID;
     if (this.selectedQuestionBankId !== 0) {
+      this.selectedQuestionBankLoaded = true;
       this.EditQuestionBank(this.selectedQuestionBankId);
       this.loadQuestions(this.selectedQuestionBankId);
     } else {
       this.EditQuestionBank(0);
       this.loadQuestions(0);
     }
+
   }
 
   loadQuestions(questionBankID: number) {
@@ -65,7 +67,7 @@ export class QuestionComponent implements OnInit {
     }
   }
 
-  EditQuestionBank(questionBankID: number) {
+   EditQuestionBank(questionBankID: number) {
     if (questionBankID !== 0) {
       this.selectedQuestionBankId = questionBankID;
       this.questionBank$.getItems(this.selectedQuestionBankId).subscribe((result: IquestionBankModel[]) => {
@@ -77,6 +79,24 @@ export class QuestionComponent implements OnInit {
           console.log('Failed to load questions bank. ' + error);
         });
     }
+  } 
+
+  updateQuestionBank(questionBankName, duration, numberofQuestion) {
+    var QuestionBankId = this.route.snapshot.params.questionBankID;
+    var requestbody = {
+      questionBankName: questionBankName,
+      duration: duration,
+      numberofQuestion: numberofQuestion,
+      createdDate: new Date(),
+      lastmodifiedDate: new Date(),
+      keyConcepts: questionBankName
+    };
+
+    this.questionBank$.updateQuestionBankService(requestbody,QuestionBankId).subscribe(
+      success =>{
+        console.log('Updated Successfully');
+      } 
+    );
   }
 
   showNewQuestion() {
@@ -97,14 +117,62 @@ export class QuestionComponent implements OnInit {
         });
   }
 
-  addQuestion(questionBankID: number) {
+  addQuestion(question,category,option1,option2,option3,option4,OptionSelected) {
     // console.log(childNewQuestionModal.value);
-    this.question$.addQuestion(this.newQuestion, questionBankID).subscribe((result: IQuestionModel[]) => {
+    /* this.question$.addQuestion(this.newQuestion, questionBankID).subscribe((result: IQuestionModel[]) => {
        console.log(result);
       },
       error => {
         console.log('Failed to load questions. ' + error);
-      });
+      }); */
+      var questionBankID = this.route.snapshot.params.questionBankID;
+      var questionBody = {
+        questionBankID: questionBankID,
+        questionBankName: 'Maths',
+        questionText: question,
+        category: category,
+        options: [option1, option2, option3, option4],
+        answer: OptionSelected
+      };
+      
+      //console.log(questionBankID,question,category,option1,option2,option3,option4);
+      console.log(OptionSelected);
+      console.log(questionBankID);
+      console.log(JSON.stringify(questionBody));
+      this.question$.addQuestion(questionBody,questionBankID).subscribe(
+        success =>{
+          console.log('Updated Successfully');
+        } 
+      );
+      this.updateSuccessful();
+  }
+
+  updateQuestion(questionID,question,category,option1,option2,option3,option4,OptionSelected) {
+    // console.log(childNewQuestionModal.value);
+    /* this.question$.addQuestion(this.newQuestion, questionBankID).subscribe((result: IQuestionModel[]) => {
+       console.log(result);
+      },
+      error => {
+        console.log('Failed to load questions. ' + error);
+      }); */
+      var questionBankID = this.route.snapshot.params.questionBankID;
+      var questionBody ={
+        questionText: question,
+        category: category,
+        options: [option1, option2, option3, option4],
+        answer: OptionSelected
+      };
+      
+      //console.log(questionBankID,question,category,option1,option2,option3,option4);
+      console.log(OptionSelected);
+      console.log(questionID);
+      console.log(JSON.stringify(questionBody));
+      this.question$.updateQuestion(questionBody,questionID).subscribe(
+        success =>{
+          console.log('Updated Successfully');
+        } 
+      );
+      this.updateSuccessful();
   }
 
   deleteQuestion(questionID: number) {

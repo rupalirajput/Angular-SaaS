@@ -32,5 +32,9 @@ export class questionBankService {
   updateQuestionBankService(questionBank, questionBankID) {
     return this.httpClient.put(this.hostUrl + 'questionBanks/' + questionBankID, JSON.stringify(questionBank), httpOptions);
   }
+
+  deleteQuestionBankService(questionBankID){
+    return this.httpClient.delete(this.hostUrl + 'questionBanks/' + questionBankID);
+  }
 }
 
