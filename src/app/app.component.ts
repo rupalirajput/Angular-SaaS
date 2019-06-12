@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {LoginService} from './services/login.service';
 import IAccountModel from './share/IAccountModel';
 
@@ -10,32 +10,31 @@ import IAccountModel from './share/IAccountModel';
 })
 export class AppComponent implements OnInit {
   title = 'QuizApp';
-  userEmail: string;
-  userid: number;
-  firstName: string;
+  userName: string;
+  userId: string;
   userRole: string;
+  userEmail: string;
 
-  constructor(private user$: LoginService, private router: Router) { }
+  constructor(private user$: LoginService, private router: Router) {
+  }
 
   ngOnInit() {
-    this.userEmail = 'rupalirajput27@gmail.com';
-    this.user$.getLoginDetails(this.userEmail).subscribe((result: IAccountModel[] ) => {
+    this.user$.getUser().subscribe((result: string) => {
       console.log(result);
-      this.userid = result[0].userid;
-      this.firstName = result[0].firstName;
-      this.userRole = result[0].role;
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('user_email', this.userEmail);
-      localStorage.setItem('user_role', this.userRole);
-      localStorage.setItem('user_id', this.userid.toString());
-      this.router.navigate(['/professor_dashboard/']);
+      this.userId = result['id'];
+      this.userName = result['displayName'];
+      this.userEmail = result['emails'][0]['value'];
+      this.userRole = localStorage.getItem('user_role');
+    }, error => {
+      console.log('Failed to load user. ' + error);
     });
   }
 
   logout(): void {
     console.log('Logout');
+    localStorage.clear();
     localStorage.setItem('isLoggedIn', 'false');
-    localStorage.removeItem('user_email');
+    localStorage.removeItem('user_name');
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_role');
     this.router.navigate(['/login']);

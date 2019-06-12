@@ -7,8 +7,8 @@ import IAccountModel from '../share/IAccountModel';
 })
 export class LoginService {
 
-  // hostUrl = 'http://localhost:1234/';
-   hostUrl = '/';
+   // hostUrl = 'http://localhost:1234/';
+    hostUrl = '/';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,7 +16,8 @@ export class LoginService {
     return this.httpClient.get<string>( this.hostUrl + 'auth/google');
   }
 
-  getLoginDetails(email: string) {
-    return this.httpClient.get<IAccountModel[]>( this.hostUrl + 'account/' + email);
+  getUser() {
+    return this.httpClient.get<string>( this.hostUrl + 'displayInfo');
   }
+
 }

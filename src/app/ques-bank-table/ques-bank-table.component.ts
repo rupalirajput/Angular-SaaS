@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {questionBankService} from '../services/ques-bank.service';
 import IquestionBankModel from '../share/IQuestionBankModel';
 import IQuestionModel from '../share/IQuestionModel';
-import {Router} from '@angular/router';
-import { error } from 'util';
-import { refreshDescendantViews } from '@angular/core/src/render3/instructions';
+import {ActivatedRoute, Router} from '@angular/router';
+import {error} from 'util';
+import {refreshDescendantViews} from '@angular/core/src/render3/instructions';
+import {LoginService} from '../services/login.service';
+import {computeStyle} from '@angular/animations/browser/src/util';
 
 @Component({
   selector: 'app-ques-bank-table',
@@ -15,11 +17,11 @@ export class questionBankTableComponent implements OnInit {
   questionBanks: IquestionBankModel[];
   selectedQuestionBankId: number;
 
-  constructor(private questionBank$: questionBankService, private router: Router) {
+  constructor(private questionBank$: questionBankService, private router: Router, private route: ActivatedRoute, private user$: LoginService) {
     questionBank$.getListsIndex().subscribe((result: IquestionBankModel[]) => {
-    this.questionBanks = result;
-  });
-}
+      this.questionBanks = result;
+    });
+  }
 
   public loadQuestionBanks()
   {
@@ -37,10 +39,10 @@ export class questionBankTableComponent implements OnInit {
     this.questionBank$.updateQuestionBankService(requesbody,questionBankID).subscribe(
       success =>{
         this.loadQuestionBanks();
+
         console.log('Updated Successfully');
-    },
-      error =>
-      {
+      },
+      error => {
         console.log(error);
       }
     );
@@ -62,26 +64,17 @@ export class questionBankTableComponent implements OnInit {
     )
   }
 
-
-
   public updateSuccessful()
   {
     if (confirm("Updated Successfully !!")) {
       window.location.reload();
     } else {
       close();
-  }
-  }
-  ngOnInit() {
-    if (localStorage.getItem('user_role') != null) {
-      switch (localStorage.getItem('user_role') ) {
-        case 'professor':
-          this.router.navigate(['/professor_dashboard/']);
-          break;
-        case 'student':
-          this.router.navigate(['/student_dashboard/']);
-          break;
-      }
     }
+  }
+
+  ngOnInit() {
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('user_role', 'professor');
   }
 }

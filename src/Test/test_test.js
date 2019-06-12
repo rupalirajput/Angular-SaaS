@@ -15,8 +15,8 @@ describe('Check test Object', function() {
     var response;
 
     before(function (done){
-        chai.request("http://localhost:1234")
-            .get("/test/101")
+        chai.request("/")
+            .get("test/101")
             .end(function (err,res){
                 requestResult = res.body;
                 response = res;

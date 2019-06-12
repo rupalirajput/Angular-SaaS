@@ -10,19 +10,20 @@ import ITestAnswersModel from '../share/ITestAnswersModel';
 })
 export class ReportService {
 
-  hostUrl = 'http://localhost:1234/';
-  
+  // hostUrl = 'http://localhost:1234/';
+  hostUrl = '/';
+
   constructor(private http: HttpClient) { }
 
   getReports(userid: string) {
     return this.http.get<IReportModel[]>( this.hostUrl + 'report/' + userid + '/reports/');
   }
 
-  getSingleReport(userid: Number, questionBankID: Number) {
+  getSingleReport(userid: number, questionBankID: number) {
     return this.http.get<IReportModel[]>( this.hostUrl + 'report/' + userid + '/reports/' + questionBankID);
   }
 
-  getTestReportDetails(testTakerID: Number, questionBankID: Number) {
+  getTestReportDetails(testTakerID: number, questionBankID: number) {
       return this.http.get<ITestAnswersModel[]>(this.hostUrl + 'report/' + testTakerID +
       '/reports/' + questionBankID);
     }
