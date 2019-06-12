@@ -21,6 +21,13 @@ export class questionBankTableComponent implements OnInit {
   });
 }
 
+  public loadQuestionBanks()
+  {
+      this.questionBank$.getListsIndex().subscribe((result: IquestionBankModel[]) => {
+      this.questionBanks = result;
+    });
+  }
+
   public publishQuestionBank(questionBankID)
   {
     var requesbody ={
@@ -29,6 +36,7 @@ export class questionBankTableComponent implements OnInit {
     console.log(requesbody);
     this.questionBank$.updateQuestionBankService(requesbody,questionBankID).subscribe(
       success =>{
+        this.loadQuestionBanks();
         console.log('Updated Successfully');
     },
       error =>
@@ -38,6 +46,23 @@ export class questionBankTableComponent implements OnInit {
     );
     this.updateSuccessful();
   }
+
+  public deleteQuestionBank(questionBankID)
+  {
+    this.questionBank$.deleteQuestionBankService(questionBankID).subscribe(
+      success =>{
+        this.loadQuestionBanks();
+        console.log('Deleted Successfully');
+    },
+      error =>
+      {
+        console.log(error);
+      }
+
+    )
+  }
+
+
 
   public updateSuccessful()
   {
