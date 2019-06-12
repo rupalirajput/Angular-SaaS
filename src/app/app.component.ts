@@ -13,14 +13,17 @@ export class AppComponent implements OnInit {
   userName: string;
   userId: string;
   userRole: string;
+  userEmail: string;
 
   constructor(private user$: LoginService, private router: Router) {
   }
 
   ngOnInit() {
     this.user$.getUser().subscribe((result: string) => {
+      console.log(result);
       this.userId = result['id'];
       this.userName = result['displayName'];
+      this.userEmail = result['emails'][0]['value'];
       this.userRole = localStorage.getItem('user_role');
     }, error => {
       console.log('Failed to load user. ' + error);
