@@ -21,9 +21,6 @@ export class StudentdashboardComponent implements OnInit {
 
   ngOnInit() {
     localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('user_role', 'professor');
-    localStorage.setItem('user_id', this.route.snapshot.params.user_id);
-    localStorage.setItem('user_name', this.route.snapshot.params.user_name);
-    window.location.reload();
+    localStorage.setItem('user_role', 'student');
   }
 }

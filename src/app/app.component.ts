@@ -18,10 +18,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userId = localStorage.getItem('user_id');
-    this.userName = localStorage.getItem('user_name');
-    this.userRole = localStorage.getItem('user_role');
-    // console.log(this.userName);
+    this.user$.getUser().subscribe((result: string) => {
+      this.userId = result['id'];
+      this.userName = result['displayName'];
+      this.userRole = localStorage.getItem('user_role');
+    }, error => {
+      console.log('Failed to load user. ' + error);
+    });
   }
 
   logout(): void {

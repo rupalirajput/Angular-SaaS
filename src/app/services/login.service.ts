@@ -15,4 +15,9 @@ export class LoginService {
   getGoogleLogin() {
     return this.httpClient.get<string>( this.hostUrl + 'auth/google');
   }
+
+  getUser() {
+    return this.httpClient.get<string>( this.hostUrl + 'displayInfo');
+  }
+
 }

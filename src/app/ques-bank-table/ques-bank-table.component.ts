@@ -5,6 +5,8 @@ import IQuestionModel from '../share/IQuestionModel';
 import {ActivatedRoute, Router} from '@angular/router';
 import {error} from 'util';
 import {refreshDescendantViews} from '@angular/core/src/render3/instructions';
+import {LoginService} from '../services/login.service';
+import {computeStyle} from '@angular/animations/browser/src/util';
 
 @Component({
   selector: 'app-ques-bank-table',
@@ -15,7 +17,7 @@ export class questionBankTableComponent implements OnInit {
   questionBanks: IquestionBankModel[];
   selectedQuestionBankId: number;
 
-  constructor(private questionBank$: questionBankService, private router: Router, private route: ActivatedRoute) {
+  constructor(private questionBank$: questionBankService, private router: Router, private route: ActivatedRoute, private user$: LoginService) {
     questionBank$.getListsIndex().subscribe((result: IquestionBankModel[]) => {
       this.questionBanks = result;
     });
@@ -48,8 +50,5 @@ export class questionBankTableComponent implements OnInit {
   ngOnInit() {
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('user_role', 'professor');
-    localStorage.setItem('user_id', this.route.snapshot.params.user_id);
-    localStorage.setItem('user_name', this.route.snapshot.params.user_name);
-    window.location.reload();
   }
 }
