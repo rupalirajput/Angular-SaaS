@@ -14,6 +14,8 @@ export class TakeTestComponent implements OnInit {
   questionBankID: string;
   questionBankName: string;
   testTakerID = "2";
+  questionsInTest = 10;
+  formSubmitText = "Next";
   currentQuestionID: number;
   orderOfQuestionInTest: number;
   questionText: string;
@@ -86,6 +88,11 @@ export class TakeTestComponent implements OnInit {
             this.category = result.category;
             this.options = result.options;
             this.answer = result.answer;
+
+            if(this.orderOfQuestionInTest == this.questionsInTest){
+              this.formSubmitText = "Submit";
+            }
+
           }
         );
       }
