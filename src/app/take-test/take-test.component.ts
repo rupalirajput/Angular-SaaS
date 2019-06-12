@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Location} from '@angular/common';
 
 import {TakeTestApiService} from '../services/take-test-api.service';
@@ -27,6 +27,7 @@ export class TakeTestComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
+    private router: Router,
     private test$: TakeTestApiService
   ) {
     this.questionBankID = route.snapshot.params['questionbankid'];
@@ -78,22 +79,26 @@ export class TakeTestComponent implements OnInit {
     this.test$.submitAnswer(testData, this.questionBankID)
     .subscribe(
       result => {
-        this.test$.getNextQuestion(this.questionBankID, this.testTakerID, this.testID)
-        .subscribe(
-          result => {
-            this.questionBankName = result.questionBankName;
-            this.currentQuestionID = result.questionID;
-            this.orderOfQuestionInTest = this.orderOfQuestionInTest + 1;
-            this.questionText = result.questionText;
-            this.category = result.category;
-            this.options = result.options;
-            this.answer = result.answer;
+        if((this.orderOfQuestionInTest == this.questionsInTest) && (this.formSubmitText == "Submit")){
+          this.router.navigate(["report/"+this.testTakerID+"/reports/"+this.questionBankID]);
+        }else{
+          this.test$.getNextQuestion(this.questionBankID, this.testTakerID, this.testID)
+          .subscribe(
+            result => {
+              this.questionBankName = result.questionBankName;
+              this.currentQuestionID = result.questionID;
+              this.orderOfQuestionInTest = this.orderOfQuestionInTest + 1;
+              this.questionText = result.questionText;
+              this.category = result.category;
+              this.options = result.options;
+              this.answer = result.answer;
 
-            if(this.orderOfQuestionInTest == this.questionsInTest){
-              this.formSubmitText = "Submit";
+              if(this.orderOfQuestionInTest == this.questionsInTest){
+                this.formSubmitText = "Submit";
+              }
             }
-          }
-        );
+          );
+        }
       }
     );
   }

@@ -90,9 +90,9 @@ export class QuestionComponent implements OnInit {
   updateQuestionBank(questionBankName, duration, numberofQuestion) {
     let QuestionBankId = this.route.snapshot.params.questionBankID;
     let requestbody = {
-      questionBankName,
-      duration,
-      numberofQuestion,
+      questionBankName: questionBankName,
+      duration: duration,
+      numberofQuestions: numberofQuestion,
       createdDate: new Date(),
       lastmodifiedDate: new Date(),
       keyConcepts: questionBankName
@@ -200,11 +200,11 @@ export class QuestionComponent implements OnInit {
     this.childModal.hide();
   }
 
-  public addQuestionBank(questionBankName, duration, numberofQuestion) {
+  public addQuestionBank(questionBankName, duration, numberofQuestions) {
     let requestbody = {
       questionBankName,
       duration,
-      numberofQuestion,
+      numberofQuestions,
       createdDate: new Date(),
       lastmodifiedDate: new Date(),
       createdBy: 'Prof. Hanks',
