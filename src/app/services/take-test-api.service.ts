@@ -8,9 +8,9 @@ import IQuestionsModel from '../share/IQuestionModel';
 })
 export class TakeTestApiService {
 
-  hostUrl = 'http://localhost:1234/';
+  // hostUrl = 'http://localhost:1234/';
 
-  // hostUrl = '/';
+  hostUrl = '/';
 
   constructor(private httpClient: HttpClient) {
   }
