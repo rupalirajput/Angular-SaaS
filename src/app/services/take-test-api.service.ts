@@ -8,19 +8,24 @@ import IQuestionsModel from '../share/IQuestionModel';
 })
 export class TakeTestApiService {
 
-  // hostUrl = 'http://localhost:1234/';
+  hostUrl = 'http://localhost:1234/';
 
-  hostUrl = '/';
+  // hostUrl = '/';
 
   constructor(private httpClient: HttpClient) {
   }
 
-  getFirstQuestion(questionBankID: string) {
+
+  getFirstQuestion(questionBankID: string){
     return this.httpClient.get<IQuestionsModel>(this.hostUrl + 'test/' + questionBankID);
   }
 
-  getNextQuestion(questionBankID: string, orderOfQuestionInTest: number, testID: string) {
-    return this.httpClient.get<IQuestionsModel>(this.hostUrl + 'test/' + questionBankID + '/' + testID);
+  getTestID(questionBankID: string, testTakerID: string) {
+    return this.httpClient.get<number>(this.hostUrl + 'test/' + questionBankID + '/' + testTakerID);
+  }
+
+  getNextQuestion(questionBankID: string, testTakerID: string, testID: number){
+    return this.httpClient.get<IQuestionsModel>(this.hostUrl + 'test/' + questionBankID + '/' + testID + '/' + testTakerID);
 
   }
 
