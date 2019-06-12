@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
       this.userId = result['id'];
       this.userName = result['displayName'];
       this.userEmail = result['emails'][0]['value'];
+      localStorage.setItem('user_id', this.userId);
       this.userRole = localStorage.getItem('user_role');
     }, error => {
       console.log('Failed to load user. ' + error);

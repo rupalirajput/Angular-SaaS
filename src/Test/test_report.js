@@ -19,7 +19,7 @@ describe('Check Report Object', function() {
 	};
 
     before(function (done){
-        chai.request("/")
+        chai.request("expressquizapp.azurewebsites.net")
             .get("report/1/reports/101")
             .send(user)
             .end(function (err,res){

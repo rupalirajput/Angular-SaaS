@@ -19,7 +19,7 @@ describe('Check getting a Question Object when taking test', function() {
 };
 
    before(function (done){
-       chai.request("/")
+       chai.request("expressquizapp.azurewebsites.net")
            .get("test/101")
            .send(user)
            .end(function (err,res){

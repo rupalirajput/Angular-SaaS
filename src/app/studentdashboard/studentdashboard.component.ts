@@ -12,6 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class StudentdashboardComponent implements OnInit {
   questionBanks: IquestionBankModel[];
+  userID: String;
 
   constructor(private questionBank$: questionBankService, private router: Router, private route: ActivatedRoute) {
     questionBank$.getListsIndex().subscribe((result: IquestionBankModel[]) => {
@@ -22,5 +23,6 @@ export class StudentdashboardComponent implements OnInit {
   ngOnInit() {
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('user_role', 'student');
+    this.userID = localStorage.getItem('user_id');
   }
 }
