@@ -15,7 +15,7 @@ describe('Check test Object', function() {
     var response;
 
     before(function (done){
-        chai.request("/")
+        chai.request("expressquizapp.azurewebsites.net")
             .get("test/101")
             .end(function (err,res){
                 requestResult = res.body;
