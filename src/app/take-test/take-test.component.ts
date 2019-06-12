@@ -34,13 +34,13 @@ export class TakeTestComponent implements OnInit {
     test$.getFirstQuestion(this.questionBankID)
       .subscribe(
         result => {
-          this.questionBankName = result[0].questionBankName;
-          this.currentQuestionID = result[0].questionID;
+          this.questionBankName = result.questionBankName;
+          this.currentQuestionID = result.questionID;
           this.orderOfQuestionInTest = 1;
-          this.questionText = result[0].questionText;
-          this.category = result[0].category;
-          this.options = result[0].options;
-          this.answer = result[0].answer;
+          this.questionText = result.questionText;
+          this.category = result.category;
+          this.options = result.options;
+          this.answer = result.answer;
           test$.getTestID(this.questionBankID, this.testTakerID)
             .subscribe(
               testid => {
