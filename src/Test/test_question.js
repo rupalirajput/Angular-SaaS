@@ -23,7 +23,6 @@ describe('Test Question result', function () {
       .get("questions/")
       .send(user)
       .end(function (err, res) {
-        console.log(res);
         requestResult = res.body;
         response = res;
         expect(err).to.be.null;
