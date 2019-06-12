@@ -13,7 +13,7 @@ import ITakeTestModel from '../share/ITakeTestModel';
 export class TakeTestComponent implements OnInit {
   questionBankID: string;
   questionBankName: string;
-  testTakerID = "2";
+  testTakerID = localStorage.getItem("user_id");
   questionsInTest = 10;
   formSubmitText = "Next";
   currentQuestionID: number;
@@ -30,7 +30,7 @@ export class TakeTestComponent implements OnInit {
     private test$: TakeTestApiService
   ) {
     this.questionBankID = route.snapshot.params['questionbankid'];
-    console.log(this.questionBankID);
+    console.log(this.testTakerID);
     test$.getFirstQuestion(this.questionBankID)
       .subscribe(
         result => {
@@ -45,6 +45,7 @@ export class TakeTestComponent implements OnInit {
             .subscribe(
               testid => {
                 this.testID = testid;
+                console.log("test id: ", this.testID);
               });
         },
         () => {
@@ -76,8 +77,7 @@ export class TakeTestComponent implements OnInit {
     };
     this.test$.submitAnswer(testData, this.questionBankID)
     .subscribe(
-      result => {},
-      () => {
+      result => {
         this.test$.getNextQuestion(this.questionBankID, this.testTakerID, this.testID)
         .subscribe(
           result => {
@@ -92,7 +92,6 @@ export class TakeTestComponent implements OnInit {
             if(this.orderOfQuestionInTest == this.questionsInTest){
               this.formSubmitText = "Submit";
             }
-
           }
         );
       }
