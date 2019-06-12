@@ -1,45 +1,45 @@
 <!-- Breadcomb area Start-->
 <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="breadcomb-list">
-          <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="breadcomb-wp">
-                <div class="breadcomb-icon">
-                  <i class="notika-icon notika-windows"></i>
-                </div>
-                <div class="breadcomb-ctn">
-                  <h2>Create Question Bank</h2>
-                  <p>Welcome to QuizApp<span class="bread-ntd"></span></p>
-                </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="breadcomb-list">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="breadcomb-wp">
+              <div class="breadcomb-icon">
+                <i class="notika-icon notika-windows"></i>
+              </div>
+              <div class="breadcomb-ctn">
+                <h2>Create Question Bank</h2>
+                <p>Welcome to QuizApp<span class="bread-ntd"></span></p>
               </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-              <div class="breadcomb-report">
-                <button type="button" class="btn btn-success" [routerLink]="['/professor_dashboard/']"> Go to
-                  Dashboard
-                </button>
-              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+            <div class="breadcomb-report">
+              <button type="button" class="btn btn-success" [routerLink]="['/professor_dashboard/']"> Go to
+                Dashboard
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- Breadcomb area End-->
+</div>
+<!-- Breadcomb area End-->
 
-  <!-- Data Table area Start-->
-  <div class="data-table-area">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="selectedQuestionBankLoaded">
-          <div class="form-element-list mg-t-30">
-            <div class="cmp-tb-hd">
-              <h2>Define Test</h2>
-            </div>
-            <form ngNoForm method="post">
-              <div class="row">
+<!-- Data Table area Start-->
+<div class="data-table-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="selectedQuestionBankLoaded">
+        <div class="form-element-list mg-t-30">
+          <div class="cmp-tb-hd">
+            <h2>Define Test</h2>
+          </div>
+          <form ngNoForm method="post">
+            <div class="row">
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="nk-int-mk">
                   <h2>Question Bank Name</h2>
@@ -49,7 +49,8 @@
                     <i class="notika-icon notika-edit"></i>
                   </div>
                   <div class="nk-int-st">
-                    <input type="text" class="form-control" [(ngModel)]="questionBanks[0].questionBankName" #questionBankName>
+                    <input type="text" class="form-control" [(ngModel)]="questionBanks[0].questionBankName"
+                           #questionBankName>
                   </div>
                 </div>
               </div>
@@ -62,7 +63,7 @@
                     <i class="notika-icon notika-edit"></i>
                   </div>
                   <div class="nk-int-st">
-                        <input type="text" class="form-control" [(ngModel)]="questionBanks[0].duration" #duration>
+                    <input type="text" class="form-control" [(ngModel)]="questionBanks[0].duration" #duration>
                   </div>
                 </div>
               </div>
@@ -75,109 +76,101 @@
                     <i class="notika-icon notika-edit"></i>
                   </div>
                   <div class="nk-int-st">
-                    <input type="text" class="form-control" [(ngModel)]="questionBanks[0].numberOfQuestions" #numberofQuestions>
+                    <input type="text" class="form-control" [(ngModel)]="questionBanks[0].numberOfQuestions"
+                           #numberofQuestions>
                   </div>
                 </div>
               </div>
             </div>
-            </form>
+          </form>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="cmp-tb-hd pull-right">
+              <button type="button" class="btn btn-success notika-btn-success waves-effect"
+                      (click)="updateQuestionBank(questionBankName.value,duration.value,numberofQuestions.value)">
+                Update Bank
+              </button>&nbsp;
+              <button type="button" class="btn btn-success notika-btn-success waves-effect" (click)="showNewQuestion()">
+                Add Question
+              </button>
+            </div>
           </div>
-           <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="cmp-tb-hd pull-right">
-                        <button type="button" class="btn btn-success notika-btn-success waves-effect" (click)="updateQuestionBank(questionBankName.value,duration.value,numberofQuestions.value)"> Update Bank
-                          </button>&nbsp;
-                      <button type="button" class="btn btn-success notika-btn-success waves-effect" (click)="showNewQuestion()"> Add Question
-                      </button>
-                    </div>
-                  </div>
-                </div>
         </div>
       </div>
-    <!--ng else part-->
-       <div class="data-table-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="!selectedQuestionBankLoaded">
-              <div class="form-element-list mg-t-30">
-                <div class="cmp-tb-hd">
-                  <h2>Define Test</h2>
-                </div>
-                <form ngNoForm method="post">
-                  <div class="row">
-                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="nk-int-mk">
-                      <h2>Question Bank Name</h2>
-                    </div>
-                    <div class="form-group ic-cmp-int">
-                      <div class="form-ic-cmp">
-                        <i class="notika-icon notika-edit"></i>
-                      </div>
-                      <div class="nk-int-st">
-                        <input type="text" class="form-control" #questionBankName>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="nk-int-mk">
-                      <h2>Test Duration</h2>
-                    </div>
-                    <div class="form-group ic-cmp-int">
-                      <div class="form-ic-cmp">
-                        <i class="notika-icon notika-edit"></i>
-                      </div>
-                      <div class="nk-int-st">
-                            <input type="text" class="form-control" #duration>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="nk-int-mk">
-                      <h2>Number of Questions</h2>
-                    </div>
-                    <div class="form-group ic-cmp-int">
-                      <div class="form-ic-cmp">
-                        <i class="notika-icon notika-edit"></i>
-                      </div>
-                      <div class="nk-int-st">
-                        <input type="text" class="form-control" #numberofQuestions>
-                      </div>
-                    </div>
-                  </div>
-                  </div>
-                </form>
-              </div>
-              <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="cmp-tb-hd pull-right">
-                        <button type="button" class="btn btn-success notika-btn-success waves-effect" (click)="addQuestionBank(questionBankName.value,duration.value,numberofQuestions.value)"> Save Bank
-                          </button>&nbsp;
-                      <button type="button" class="btn btn-success notika-btn-success waves-effect" (click)="showNewQuestion()"> Add Question
-                      </button>
-                    </div>
-                  </div>
-                </div>
-            </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="!selectedQuestionBankLoaded">
+        <div class="form-element-list mg-t-30">
+          <div class="cmp-tb-hd">
+            <h2>Define Test</h2>
           </div>
-      <!-- <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="cmp-tb-hd pull-right">
-              <button type="button" class="btn btn-success notika-btn-success waves-effect" (click)="addQuestionBank(questionBankName.value,duration.value,numberofQuestions.value)"> Save Bank
-                </button>$nbsp;
-            <button type="button" class="btn btn-success notika-btn-success waves-effect" (click)="showNewQuestion()"> Add Question
-            </button>
+          <form ngNoForm method="post">
+            <div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="nk-int-mk">
+                  <h2>Question Bank Name</h2>
+                </div>
+                <div class="form-group ic-cmp-int">
+                  <div class="form-ic-cmp">
+                    <i class="notika-icon notika-edit"></i>
+                  </div>
+                  <div class="nk-int-st">
+                    <input type="text" class="form-control" #questionBankName>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="nk-int-mk">
+                  <h2>Test Duration</h2>
+                </div>
+                <div class="form-group ic-cmp-int">
+                  <div class="form-ic-cmp">
+                    <i class="notika-icon notika-edit"></i>
+                  </div>
+                  <div class="nk-int-st">
+                    <input type="text" class="form-control" #duration>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="nk-int-mk">
+                  <h2>Number of Questions</h2>
+                </div>
+                <div class="form-group ic-cmp-int">
+                  <div class="form-ic-cmp">
+                    <i class="notika-icon notika-edit"></i>
+                  </div>
+                  <div class="nk-int-st">
+                    <input type="text" class="form-control" #numberofQuestions>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="cmp-tb-hd pull-right">
+              <button type="button" class="btn btn-success notika-btn-success waves-effect"
+                      (click)="addQuestionBank(questionBankName.value,duration.value,numberofQuestions.value)"> Save
+                Bank
+              </button>&nbsp;
+              <button type="button" class="btn btn-success notika-btn-success waves-effect"
+                      (click)="showNewQuestion()"> Add Question
+              </button>
+            </div>
           </div>
         </div>
-      </div> -->
+      </div>
+    </div>
 
-      <div bsModal #childNewQuestionModal="bs-modal" class="modal fade" id="addQuestion" role="dialog">
-        <div class="modal-dialog modal-large">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" (click)="hideChildNewQuestionModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-              <form method="post">
+    <div bsModal #childNewQuestionModal="bs-modal" class="modal fade" id="addQuestion" role="dialog">
+      <div class="modal-dialog modal-large">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" (click)="hideChildNewQuestionModal()">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form method="post">
               <div class="row">
                 <h2>Question #1</h2>
                 <div class="form-example-int">
@@ -206,7 +199,7 @@
                         <div class="col-lg-10 col-md-7 col-sm-7 col-xs-12">
                           <div class="nk-int-st">
                             <input type="text" class="form-control input-sm" placeholder="Enter Option 1"
-                             required #option1>
+                                   required #option1>
                           </div>
                         </div>
                       </div>
@@ -221,7 +214,7 @@
                         <div class="col-lg-10 col-md-7 col-sm-7 col-xs-12">
                           <div class="nk-int-st">
                             <input type="text" class="form-control input-sm" placeholder="Enter Option 1"
-                                    required #option2>
+                                   required #option2>
                           </div>
                         </div>
                       </div>
@@ -251,7 +244,7 @@
                         <div class="col-lg-10 col-md-7 col-sm-7 col-xs-12">
                           <div class="nk-int-st">
                             <input type="text" class="form-control input-sm" placeholder="Enter Option 4"
-                                    required #option4>
+                                   required #option4>
                           </div>
                         </div>
                       </div>
@@ -268,25 +261,26 @@
                             <div class="dropdown-trig-list">
                               <div class="dropdown-trig-sing">
 
-                                  <select id = "OptionSelected" name = "OptionSelected" [(ngModel)]="OptionSelected" class = "form-control">
-                                 <!--  <li role="presentation">
-                                    <a role="menuitem" tabindex="-1">Option 1</a>
-                                  </li>
-                                  <li role="presentation">
-                                    <a role="menuitem" tabindex="-1">Option 2</a>
-                                  </li>
-                                  <li role="presentation">
-                                    <a role="menuitem" tabindex="-1">Option 3</a>
-                                  </li>
-                                  <li role="presentation">
-                                    <a role="menuitem" tabindex="-1">Option 4</a>
-                                  </li>-->
+                                <select id="OptionSelected" name="OptionSelected" [(ngModel)]="OptionSelected"
+                                        class="form-control">
+                                  <!--  <li role="presentation">
+                                     <a role="menuitem" tabindex="-1">Option 1</a>
+                                   </li>
+                                   <li role="presentation">
+                                     <a role="menuitem" tabindex="-1">Option 2</a>
+                                   </li>
+                                   <li role="presentation">
+                                     <a role="menuitem" tabindex="-1">Option 3</a>
+                                   </li>
+                                   <li role="presentation">
+                                     <a role="menuitem" tabindex="-1">Option 4</a>
+                                   </li>-->
 
-                                  <option value = "Option1" selected>Option 1</option>
-                                  <option value = "Option2">Option 2</option>
-                                  <option value = "Option3">Option 3</option>
-                                  <option value = "Option4">Option 4</option>
-                                  </select>
+                                  <option value="Option1" selected>Option 1</option>
+                                  <option value="Option2">Option 2</option>
+                                  <option value="Option3">Option 3</option>
+                                  <option value="Option4">Option 4</option>
+                                </select>
                               </div>
                             </div>
                           </div>
@@ -297,188 +291,193 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-success" (click)="addQuestion(question.value,category.value,option1.value,option2.value,option3.value,option4.value,OptionSelected)">Save</button>
+                <button type="button" class="btn btn-success"
+                        (click)="addQuestion(question.value,category.value,option1.value,option2.value,option3.value,option4.value,OptionSelected)">
+                  Save
+                </button>
                 <button type="button" class="btn btn-danger" (click)="hideChildNewQuestionModal()">Close</button>
               </div>
-              </form>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="data-table-list">
+          <div class="table-responsive">
+            <div class="widget widget-table action-table">
+              <table id="questionTable" class="table table-striped">
+                <thead>
+                <tr>
+                  <th>Question(s)</th>
+                  <th>Category</th>
+                  <th>Options</th>
+                  <th>Answer</th>
+                  <th>Action(s)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let question of questions; let i = index">
+                  <td>{{question.questionText}}</td>
+                  <td>{{question.category}}</td>
+                  <td>{{question.options}}</td>
+                  <td>{{question.answer}}</td>
+                  <td class="nowrap" style="width: 15%">
+                    <button class="btn btn-primary" (click)="editQuestionDetails(question.questionID)">Edit</button>
+                    &nbsp;&nbsp;<button type="button" (click)="deleteQuestion(question.questionID)"
+                                        class="btn btn-danger"> Delete
+                  </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="data-table-list">
-            <div class="table-responsive">
-              <div class="widget widget-table action-table">
-                <table id="questionTable" class="table table-striped">
-                  <thead>
-                  <tr>
-                    <th>Question(s)</th>
-                    <th>Category</th>
-                    <th>Options</th>
-                    <th>Answer</th>
-                    <th>Action(s)</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr *ngFor="let question of questions; let i = index">
-                    <td>{{question.questionText}}</td>
-                    <td>{{question.category}}</td>
-                    <td>{{question.options}}</td>
-                    <td>{{question.answer}}</td>
-                    <td class="nowrap" style="width: 15%">
-                      <button class="btn btn-primary" (click)="editQuestionDetails(question.questionID)">Edit</button>
-                      &nbsp;&nbsp;<button type="button" (click)="deleteQuestion(question.questionID)" class="btn btn-danger"> Delete</button>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+    <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+         aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-large" *ngIf="selectedQuestionLoaded">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" (click)="hideChildModal()">&times;</button>
           </div>
-        </div>
-      </div>
-
-      <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
-           aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-large" *ngIf="selectedQuestionLoaded">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" (click)="hideChildModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-              <form ngNoForm method="post">
-                <div class="form-group">
-                  <div class="row">
-                    <h2>Edit Question {{questionDetails[0].questionID}}</h2>
-                    <div class="form-example-int">
+          <div class="modal-body">
+            <form ngNoForm method="post">
+              <div class="form-group">
+                <div class="row">
+                  <h2>Edit Question {{questionDetails[0].questionID}}</h2>
+                  <div class="form-example-int">
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                          <label class="hrzn-fm">Question</label>
+                        </div>
+                        <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12">
+                          <div class="nk-int-st">
+                            <input [(ngModel)]="questionDetails[0].questionText" class="form-control" #questiontext>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-example-int mg-t-15">
                       <div class="form-group">
                         <div class="row">
                           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                            <label class="hrzn-fm">Question</label>
+                            <label class="hrzn-fm">Category</label>
                           </div>
                           <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12">
                             <div class="nk-int-st">
-                              <input [(ngModel)]="questionDetails[0].questionText" class="form-control" #questiontext>
+                              <input [(ngModel)]="questionDetails[0].category" class="form-control" #category>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="form-example-int mg-t-15">
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                              <label class="hrzn-fm">Category</label>
-                            </div>
-                            <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12">
-                              <div class="nk-int-st">
-                                <input [(ngModel)]="questionDetails[0].category" class="form-control" #category>
-                              </div>
+                    </div>
+                    <div class="form-example-int mg-t-15">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Option 1</label>
+                          </div>
+                          <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12">
+                            <div class="nk-int-st">
+                              <input [(ngModel)]="questionDetails[0].options[0]" class="form-control" #option1>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="form-example-int mg-t-15">
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                              <label class="hrzn-fm">Option 1</label>
-                            </div>
-                            <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12">
-                              <div class="nk-int-st">
-                                <input [(ngModel)]="questionDetails[0].options[0]" class="form-control" #option1>
-                              </div>
+                    </div>
+                    <div class="form-example-int mg-t-15">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Option 2</label>
+                          </div>
+                          <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12">
+                            <div class="nk-int-st">
+                              <input [(ngModel)]="questionDetails[0].options[1]" class="form-control" #option2>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="form-example-int mg-t-15">
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                              <label class="hrzn-fm">Option 2</label>
-                            </div>
-                            <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12">
-                              <div class="nk-int-st">
-                                <input [(ngModel)]="questionDetails[0].options[1]" class="form-control" #option2>
-                              </div>
+                    </div>
+                    <div class="form-example-int mg-t-15">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Option 3</label>
+                          </div>
+                          <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12">
+                            <div class="nk-int-st">
+                              <input [(ngModel)]="questionDetails[0].options[2]" class="form-control" #option3>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="form-example-int mg-t-15">
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                              <label class="hrzn-fm">Option 3</label>
-                            </div>
-                            <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12">
-                              <div class="nk-int-st">
-                                <input [(ngModel)]="questionDetails[0].options[2]" class="form-control" #option3>
-                              </div>
+                    </div>
+                    <div class="form-example-int mg-t-15">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Option 4</label>
+                          </div>
+                          <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12">
+                            <div class="nk-int-st">
+                              <input [(ngModel)]="questionDetails[0].options[3]" class="form-control" #option4>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="form-example-int mg-t-15">
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                              <label class="hrzn-fm">Option 4</label>
-                            </div>
-                            <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12">
-                              <div class="nk-int-st">
-                                <input [(ngModel)]="questionDetails[0].options[3]" class="form-control" #option4>
-                              </div>
+                    </div>
+                    <div class="form-example-int mg-t-15">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Choosen Answer </label>
+                          </div>
+                          <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12">
+                            <div class="nk-int-st">
+                              <label> <b> Option {{questionDetails[0].answer}} </b> </label>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="form-example-int mg-t-15">
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                              <label class="hrzn-fm">Choosen Answer </label>
-                            </div>
-                            <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12">
-                              <div class="nk-int-st">
-                                <label> <b> Option {{questionDetails[0].answer}} </b> </label>
-                              </div>
-                            </div>
+                    </div>
+                    <div class="form-example-int mg-t-15">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-3 col-xs-12">
+                            <label class="hrzn-fm">Choose Another Answer</label>
                           </div>
-                        </div>
-                      </div>
-                      <div class="form-example-int mg-t-15">
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-3 col-xs-12">
-                              <label class="hrzn-fm">Choose Another Answer</label>
-                            </div>
-                            <div class="col-lg-9 col-xs-12">
-                              <div class="nk-int-st">
-                                <div class="dropdown-trig-list">
-                                  <div class="dropdown-trig-sing">
-                                  <select id = "OptionSelected" name = "OptionSelected"  [(ngModel)]="OptionSelected" class = "form-control">
-                                      <!--  <li role="presentation">
-                                          <a role="menuitem" tabindex="-1">Option 1</a>
-                                        </li>
-                                        <li role="presentation">
-                                          <a role="menuitem" tabindex="-1">Option 2</a>
-                                        </li>
-                                        <li role="presentation">
-                                          <a role="menuitem" tabindex="-1">Option 3</a>
-                                        </li>
-                                        <li role="presentation">
-                                          <a role="menuitem" tabindex="-1">Option 4</a>
-                                        </li>-->
+                          <div class="col-lg-9 col-xs-12">
+                            <div class="nk-int-st">
+                              <div class="dropdown-trig-list">
+                                <div class="dropdown-trig-sing">
+                                  <select id="OptionSelected" name="OptionSelected" [(ngModel)]="OptionSelected"
+                                          class="form-control">
+                                    <!--  <li role="presentation">
+                                        <a role="menuitem" tabindex="-1">Option 1</a>
+                                      </li>
+                                      <li role="presentation">
+                                        <a role="menuitem" tabindex="-1">Option 2</a>
+                                      </li>
+                                      <li role="presentation">
+                                        <a role="menuitem" tabindex="-1">Option 3</a>
+                                      </li>
+                                      <li role="presentation">
+                                        <a role="menuitem" tabindex="-1">Option 4</a>
+                                      </li>-->
 
-                                        <option value = "Option1" selected>Option 1</option>
-                                        <option value = "Option2">Option 2</option>
-                                        <option value = "Option3">Option 3</option>
-                                        <option value = "Option4">Option 4</option>
-                                        </select>
-                                  </div>
+                                    <option value="Option1" selected>Option 1</option>
+                                    <option value="Option2">Option 2</option>
+                                    <option value="Option3">Option 3</option>
+                                    <option value="Option4">Option 4</option>
+                                  </select>
                                 </div>
                               </div>
                             </div>
@@ -488,15 +487,20 @@
                     </div>
                   </div>
                 </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal" (click)="updateQuestion(questionDetails[0].questionID,questiontext.value,category.value,option1.value,option2.value,option3.value,option4.value,OptionSelected)">Save</button>
-            </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal"
+                    (click)="updateQuestion(questionDetails[0].questionID,questiontext.value,category.value,option1.value,option2.value,option3.value,option4.value,OptionSelected)">
+              Save
+            </button>
           </div>
         </div>
       </div>
-
     </div>
+
   </div>
-  <!-- Data Table area End-->
+</div>
+<!-- Data Table area End-->
+

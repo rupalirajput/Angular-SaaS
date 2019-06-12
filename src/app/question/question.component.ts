@@ -1,16 +1,16 @@
-import { Component, OnInit, ViewChild, Input, Output} from '@angular/core';
-import { QuestionApiService } from '../services/question-api.service';
+import {Component, OnInit, ViewChild, Input, Output} from '@angular/core';
+import {QuestionApiService} from '../services/question-api.service';
 import IQuestionModel from '../share/IQuestionModel';
-import { ModalDirective } from 'ngx-bootstrap';
-import { NgForm } from '@angular/forms';
+import {ModalDirective} from 'ngx-bootstrap';
+import {NgForm} from '@angular/forms';
 import IquestionBankModel from '../share/IQuestionBankModel';
 import {questionBankService} from '../services/ques-bank.service';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import IQuestionBankModel from '../share/IQuestionBankModel';
-import { jsonpCallbackContext } from '@angular/common/http/src/module';
-import { post } from 'selenium-webdriver/http';
-import { error } from '@angular/compiler/src/util';
+import {jsonpCallbackContext} from '@angular/common/http/src/module';
+import {post} from 'selenium-webdriver/http';
+import {error} from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-question',
@@ -42,23 +42,26 @@ export class QuestionComponent implements OnInit {
     private location: Location,
     private question$: QuestionApiService,
     private questionBank$: questionBankService
-    ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.selectedQuestionBankId = this.route.snapshot.params.questionBankID;
-    if (this.selectedQuestionBankId !== 0) {
+    if (this.selectedQuestionBankId == 0) {
+      this.selectedQuestionBankLoaded = false;
+      this.EditQuestionBank(0);
+      this.loadQuestions(0);
+    } else {
       this.selectedQuestionBankLoaded = true;
       this.EditQuestionBank(this.selectedQuestionBankId);
       this.loadQuestions(this.selectedQuestionBankId);
-    } else {
-      this.EditQuestionBank(0);
-      this.loadQuestions(0);
     }
-
   }
 
   loadQuestions(questionBankID: number) {
-    if (questionBankID !== 0) {
+    if (questionBankID == 0) {
+      console.log('Failed to load questions. ');
+    } else {
       this.selectedQuestionBankId = questionBankID;
       this.question$.getQuestionsByBankID(this.selectedQuestionBankId).subscribe((result: IQuestionModel[]) => {
         this.questions = result;
@@ -68,8 +71,10 @@ export class QuestionComponent implements OnInit {
     }
   }
 
-   EditQuestionBank(questionBankID: number) {
-    if (questionBankID !== 0) {
+  EditQuestionBank(questionBankID: number) {
+    if (questionBankID == 0) {
+      console.log('Failed to load questions bank. ');
+    } else {
       this.selectedQuestionBankId = questionBankID;
       this.questionBank$.getItems(this.selectedQuestionBankId).subscribe((result: IquestionBankModel[]) => {
           this.selectedQuestionBankLoaded = true;
@@ -83,18 +88,18 @@ export class QuestionComponent implements OnInit {
   }
 
   updateQuestionBank(questionBankName, duration, numberofQuestion) {
-    var QuestionBankId = this.route.snapshot.params.questionBankID;
-    var requestbody = {
-      questionBankName: questionBankName,
-      duration: duration,
-      numberofQuestion: numberofQuestion,
+    let QuestionBankId = this.route.snapshot.params.questionBankID;
+    let requestbody = {
+      questionBankName,
+      duration,
+      numberofQuestion,
       createdDate: new Date(),
       lastmodifiedDate: new Date(),
       keyConcepts: questionBankName
     };
 
-    this.questionBank$.updateQuestionBankService(requestbody,QuestionBankId).subscribe(
-      success =>{
+    this.questionBank$.updateQuestionBankService(requestbody, QuestionBankId).subscribe(
+      success => {
         console.log('Updated Successfully');
       }
     );
@@ -108,17 +113,17 @@ export class QuestionComponent implements OnInit {
   editQuestionDetails(questionID: number) {
     this.selectedQuestionId = questionID;
     this.question$.getQuestionsIndex(this.selectedQuestionId).subscribe((result: IQuestionModel[]) => {
-          this.questionDetails = result;
-          this.selectedQuestionLoaded = true;
-          this.childModal.show();
-          console.log(this.questionDetails[0]);
-        },
-        error => {
-          console.log('Failed to load questions. ' + error);
-        });
+        this.questionDetails = result;
+        this.selectedQuestionLoaded = true;
+        this.childModal.show();
+        console.log(this.questionDetails[0]);
+      },
+      error => {
+        console.log('Failed to load questions. ' + error);
+      });
   }
 
-  addQuestion(question,category,option1,option2,option3,option4,OptionSelected) {
+  addQuestion(question, category, option1, option2, option3, option4, OptionSelected) {
     // console.log(childNewQuestionModal.value);
     /* this.question$.addQuestion(this.newQuestion, questionBankID).subscribe((result: IQuestionModel[]) => {
        console.log(result);
@@ -126,29 +131,29 @@ export class QuestionComponent implements OnInit {
       error => {
         console.log('Failed to load questions. ' + error);
       }); */
-      var questionBankID = this.route.snapshot.params.questionBankID;
-      var questionBody = {
-        questionBankID: questionBankID,
-        questionBankName: 'Maths',
-        questionText: question,
-        category: category,
-        options: [option1, option2, option3, option4],
-        answer: OptionSelected
-      };
+    let questionBankID = this.route.snapshot.params.questionBankID;
+    let questionBody = {
+      questionBankID,
+      questionBankName: 'Maths',
+      questionText: question,
+      category,
+      options: [option1, option2, option3, option4],
+      answer: OptionSelected
+    };
 
-      //console.log(questionBankID,question,category,option1,option2,option3,option4);
-      console.log(OptionSelected);
-      console.log(questionBankID);
-      console.log(JSON.stringify(questionBody));
-      this.question$.addQuestion(questionBody,questionBankID).subscribe(
-        success =>{
-          console.log('Updated Successfully');
-        }
-      );
-      this.updateSuccessful();
+    // console.log(questionBankID,question,category,option1,option2,option3,option4);
+    console.log(OptionSelected);
+    console.log(questionBankID);
+    console.log(JSON.stringify(questionBody));
+    this.question$.addQuestion(questionBody, questionBankID).subscribe(
+      success => {
+        console.log('Updated Successfully');
+      }
+    );
+    this.updateSuccessful();
   }
 
-  updateQuestion(questionID,question,category,option1,option2,option3,option4,OptionSelected) {
+  updateQuestion(questionID, question, category, option1, option2, option3, option4, OptionSelected) {
     // console.log(childNewQuestionModal.value);
     /* this.question$.addQuestion(this.newQuestion, questionBankID).subscribe((result: IQuestionModel[]) => {
        console.log(result);
@@ -156,24 +161,24 @@ export class QuestionComponent implements OnInit {
       error => {
         console.log('Failed to load questions. ' + error);
       }); */
-      var questionBankID = this.route.snapshot.params.questionBankID;
-      var questionBody ={
-        questionText: question,
-        category: category,
-        options: [option1, option2, option3, option4],
-        answer: OptionSelected
-      };
+    let questionBankID = this.route.snapshot.params.questionBankID;
+    let questionBody = {
+      questionText: question,
+      category,
+      options: [option1, option2, option3, option4],
+      answer: OptionSelected
+    };
 
-      //console.log(questionBankID,question,category,option1,option2,option3,option4);
-      console.log(OptionSelected);
-      console.log(questionID);
-      console.log(JSON.stringify(questionBody));
-      this.question$.updateQuestion(questionBody,questionID).subscribe(
-        success =>{
-          console.log('Updated Successfully');
-        }
-      );
-      this.updateSuccessful();
+    // console.log(questionBankID,question,category,option1,option2,option3,option4);
+    console.log(OptionSelected);
+    console.log(questionID);
+    console.log(JSON.stringify(questionBody));
+    this.question$.updateQuestion(questionBody, questionID).subscribe(
+      success => {
+        console.log('Updated Successfully');
+      }
+    );
+    this.updateSuccessful();
   }
 
   deleteQuestion(questionID: number) {
@@ -195,11 +200,11 @@ export class QuestionComponent implements OnInit {
     this.childModal.hide();
   }
 
-  public addQuestionBank(questionBankName, duration, numberofQuestion){
-    var requestbody = {
-      questionBankName: questionBankName,
-      duration: duration,
-      numberofQuestion: numberofQuestion,
+  public addQuestionBank(questionBankName, duration, numberofQuestion) {
+    let requestbody = {
+      questionBankName,
+      duration,
+      numberofQuestion,
       createdDate: new Date(),
       lastmodifiedDate: new Date(),
       createdBy: 'Prof. Hanks',
@@ -207,27 +212,26 @@ export class QuestionComponent implements OnInit {
       status: 'Draft',
       keyConcepts: questionBankName
     };
-   /*  this.newQuestionBank.questionBankName = questionBankName;
-    this.newQuestionBank.numberOfQuestions = numberofQuestion;
-    this.newQuestionBank.duration = duration;
-    console.log(JSON.stringify(this.newQuestionBank)); */
+    /*  this.newQuestionBank.questionBankName = questionBankName;
+     this.newQuestionBank.numberOfQuestions = numberofQuestion;
+     this.newQuestionBank.duration = duration;
+     console.log(JSON.stringify(this.newQuestionBank)); */
     console.log(JSON.stringify(requestbody));
     console.log(requestbody);
     this.questionBank$.addQuestionBankService(requestbody).subscribe(
-      success =>{
+      success => {
         console.log('Updated Successfully');
       }
     );
     this.updateSuccessful();
   }
 
-  public updateSuccessful()
-  {
-    if (confirm("Question Bank Created Successfully !!")) {
+  public updateSuccessful() {
+    if (confirm('Question Bank Created Successfully !!')) {
       window.location.reload();
     } else {
       close();
-  }
+    }
   }
 
 
