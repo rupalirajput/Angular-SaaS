@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'student_dashboard/:user_id/:user_name', component: StudentdashboardComponent },
   { path: 'home/:user', component: questionBankTableComponent },
   { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
 ];
 
 @NgModule({
