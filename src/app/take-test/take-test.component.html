@@ -65,7 +65,7 @@
 														          <form #answerForm="ngForm" (ngSubmit)="submitAnswer(answerForm.form);">
 																				<div *ngFor="let option of options">
 																					<label style="color:black">
-																						<input type="radio" name="answer" ngModel required #radioField="ngModel" [value]='option'>
+																						<input type="radio" name="answer" ngModel #radioField="ngModel" [value]='option'>
 																						{{option}}
 																					</label>
 																				</div>
