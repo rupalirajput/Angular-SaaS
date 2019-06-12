@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {LoginService} from './services/login.service';
 import IAccountModel from './share/IAccountModel';
 
@@ -14,20 +14,19 @@ export class AppComponent implements OnInit {
   userId: string;
   userRole: string;
 
-  constructor(private user$: LoginService, private router: Router) { }
+  constructor(private user$: LoginService, private router: Router) {
+  }
 
   ngOnInit() {
-    if (localStorage.getItem('user_id') == null) {
-      this.router.navigate(['/login/']);
-    }
-
     this.userId = localStorage.getItem('user_id');
     this.userName = localStorage.getItem('user_name');
     this.userRole = localStorage.getItem('user_role');
+    // console.log(this.userName);
   }
 
   logout(): void {
     console.log('Logout');
+    localStorage.clear();
     localStorage.setItem('isLoggedIn', 'false');
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_id');

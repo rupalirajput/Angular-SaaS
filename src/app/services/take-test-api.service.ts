@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import ITakeTestModel from '../share/ITakeTestModel';
 import IQuestionsModel from '../share/IQuestionModel';
 
@@ -8,23 +8,23 @@ import IQuestionsModel from '../share/IQuestionModel';
 })
 export class TakeTestApiService {
 
-  hostUrl = 'http://localhost:1234/';
+  // hostUrl = 'http://localhost:1234/';
 
-  //hostUrl = '/';
+  hostUrl = '/';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
-  getFirstQuestion(questionBankID: string)
-  {
+  getFirstQuestion(questionBankID: string) {
     return this.httpClient.get<IQuestionsModel>(this.hostUrl + 'test/' + questionBankID);
   }
 
-  getNextQuestion(questionBankID: string, orderOfQuestionInTest: Number, testID: string){
+  getNextQuestion(questionBankID: string, orderOfQuestionInTest: number, testID: string) {
     return this.httpClient.get<IQuestionsModel>(this.hostUrl + 'test/' + questionBankID + '/' + testID);
 
   }
 
-  submitAnswer(testData: any, questionBankID: String){
+  submitAnswer(testData: any, questionBankID: string) {
     return this.httpClient.post<IQuestionsModel>(this.hostUrl + 'test/' + questionBankID, testData);
   }
 }

@@ -14,11 +14,11 @@ const routes: Routes = [
   { path: 'reports', component: ReportComponent },
   { path: 'report/:testTakerID/reports/:questionBankID', component: ReportComponent},
   { path: 'report/:testTakerID/reports/:questionBankID/testID/:testID', component: ReportComponent},
-  { path: 'professor_dashboard/:user', component: questionBankTableComponent },
+  { path: 'professor_dashboard/:user_id/:user_name', component: questionBankTableComponent },
   { path: 'create_question/:questionBankID', component: QuestionComponent },
   { path: 'test/detail/:id', component: TestDetailsComponent},
   { path: 'test/:questionbankid', component: TakeTestComponent },
-  { path: 'student_dashboard/:user', component: StudentdashboardComponent },
+  { path: 'student_dashboard/:user_id/:user_name', component: StudentdashboardComponent },
   { path: 'home/:user', component: questionBankTableComponent },
   { path: 'login', component: LoginComponent },
 ];

@@ -14,10 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(private user$: LoginService, private router: Router) {}
 
   ngOnInit() {
-    // localStorage.clear();
-    if (localStorage.getItem('user_email') != null) {
-      this.router.navigate(['/professor_dashboard/']);
-    }
+    localStorage.clear();
   }
 
   googleLogin() {

@@ -22,7 +22,7 @@ export class questionBankTableComponent implements OnInit {
   }
 
   public publishQuestionBank(questionBankID) {
-    var requesbody = {
+    const requesbody = {
       status: 'Published',
     };
     console.log(requesbody);
@@ -46,10 +46,10 @@ export class questionBankTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this.route.snapshot.params.user.split('?')[1]);
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('user_role', 'professor');
-    localStorage.setItem('user_id', this.route.snapshot.params.user.split('?')[0]);
-    localStorage.setItem('user_name', this.route.snapshot.params.user.split('?')[1]);
+    localStorage.setItem('user_id', this.route.snapshot.params.user_id);
+    localStorage.setItem('user_name', this.route.snapshot.params.user_name);
+    window.location.reload();
   }
 }
