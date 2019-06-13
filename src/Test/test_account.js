@@ -19,12 +19,12 @@ describe('Test Account result', function () {
 	var response;
 
     before(function (done) {
-        chai.request("expressquizapp.azurewebsites.net")
+        chai.request("finalquizapp.azurewebsites.net")
 			.get("/account")
 			.send(user)
 			.end(function (err, res) {
 				console.log(res);
-				requestResult = res.body;
+				//requestResult = res.body;
 				//console.log(requestResult);
 				response = res;
                 expect(err).to.be.null;

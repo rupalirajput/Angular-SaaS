@@ -31,7 +31,6 @@ export class TakeTestComponent implements OnInit {
     private test$: TakeTestApiService
   ) {
     this.questionBankID = route.snapshot.params['questionbankid'];
-    console.log(this.testTakerID);
     test$.getFirstQuestion(this.questionBankID)
       .subscribe(
         result => {
@@ -46,7 +45,6 @@ export class TakeTestComponent implements OnInit {
             .subscribe(
               testid => {
                 this.testID = testid;
-                console.log("test id: ", this.testID);
               });
         },
         () => {
