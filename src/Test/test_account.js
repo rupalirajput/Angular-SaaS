@@ -19,7 +19,7 @@ describe('Test Account result', function () {
 	var response;
 
     before(function (done) {
-        chai.request("finalquizapp.azurewebsites.net")
+        chai.request("expressquizapp.azurewebsites.net")
 			.get("/account")
 			.send(user)
 			.end(function (err, res) {
