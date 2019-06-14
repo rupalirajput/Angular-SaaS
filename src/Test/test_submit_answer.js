@@ -12,10 +12,7 @@ chai.use(chaiHttp);
 describe('Check post method when submitting test answers', function() {
 
     var response;
-    var user = {
-		email: 'chrischoi5@gmail.com',
-		password: 'TKLAnrsGAm2e2K9'
-	};
+ 
 
    before (function (done){
        chai.request("expressquizapp.azurewebsites.net")
@@ -31,7 +28,9 @@ describe('Check post method when submitting test answers', function() {
                 isCorrect: 1})
             .end(function (err,res){
                 response = res;
+                console.log(res);
                 expect(err).to.be.null;
+                console.log(res);
                 expect(res).to.have.status(200);
             done();
            });

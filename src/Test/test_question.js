@@ -13,10 +13,6 @@ describe('Test Question result', function () {
 
   var requestResult;
   var response;
-  var user = {
-		email: 'chrischoi5@gmail.com',
-		password: 'TKLAnrsGAm2e2K9'
-	};
 
   before(function (done) {
     chai.request("expressquizapp.azurewebsites.net/")
